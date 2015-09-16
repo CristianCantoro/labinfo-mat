@@ -1,0 +1,97 @@
+\documentclass[10pt]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Berlin}
+  \setbeamertemplate{blocks}[rounded]
+  \setbeamercolor{block title}{bg=gray}
+  \setbeamercovered{transparent}
+}
+
+% %%% Packages %%%
+% Babel and fonts
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+
+% Graphics and images
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg, .eps}
+\usepackage{relsize}
+\usepackage{colortbl}
+
+
+% Math notation and symbols
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{bbold}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+
+\DeclareMathOperator*{\len}{\textbf{length of }}
+
+% \DeclareMathOperator*{\len}{\text{length of }}
+% Backup slides
+\usepackage{appendixnumberbeamer}
+
+% Tables, Colums and the like
+\usepackage{longtable}
+\usepackage{listings}
+
+% Hyperref
+\usepackage{hyperref} 
+
+% Boxes
+\usepackage{fancybox}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{mdframed}	
+
+% Custom packages
+\usepackage{presmacros}
+\usepackage{pdfpages}
+
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\input{sections/title.tex}
+
+\section{Intro}
+\input{sections/intro.tex}
+
+\section{Java}
+\input{sections/java.tex}
+ 
+\section{Variabili}
+\input{sections/variabili.tex}
+
+\section{Operatori}
+\input{sections/operatori.tex}
+ 
+\section{Eclipse}
+\input{sections/eclipse.tex}
+
+\section{Istruzioni Condizionali}
+\input{sections/condizionali.tex}
+
+\section{Esericizi}
+\input{sections/esercizi.tex}
+
+% \appendix
+% \section*{Backup}
+% \input{99backup/backup.tex}
+
+\end{document}

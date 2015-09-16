@@ -1,0 +1,79 @@
+\subsection[Definizione ed esempi]{Definizione ed esempi}
+
+\begin{frame}{Variabili (I)}
+
+  Variabile\footnote{da \url{https://en.wikipedia.org/wiki/Variable_(computer_science)}}:
+  \begin{quote}
+    «In computer programming, a \textbf{variable} or scalar is a \alert<2->{storage location}
+     paired with an \alert<3->{associated symbolic name (an identifier)}, which contains some
+     known or unknown quantity of information referred to as a \alert<4->{value}.»
+  \end{quote}
+
+\end{frame}
+
+\begin{frame}{Variabili (II)}
+
+  Esempi:   
+    \begin{columns}[T] % contents are top vertically aligned
+      \begin{column}[T]{5cm} % each column can also be its own environment
+	\begin{enumerate}[<+->]
+	  \item un intero:
+	  \begin{itemize}
+	    \item \texttt{\textbf{int} i = 0;}
+	    \item Pseudocodice $i \gets 0$
+	  \end{itemize}
+	  \item un numero con la virgola:
+	  \begin{itemize}
+	    \item \texttt{\textbf{double} pi = 3.14;}
+	    \item (usate \texttt{Math.PI} per $\pi$)
+	  \end{itemize}
+	  \item un (singolo) carattere:
+	  \begin{itemize}
+	    \item \texttt{\textbf{char} k = \structure{'c'};}
+	  \end{itemize}
+	\end{enumerate}
+      \end{column}
+      \begin{column}[T]{7cm} % alternative top-align that's better for graphics
+	\begin{enumerate}[<+->]
+	  \setcounter{enumi}{3}
+	  \item un \emph{valore booleano}:
+	  \begin{itemize}
+	    \item \texttt{\textbf{bool} val1 = \textbf{true};}
+	    \item \texttt{\textbf{bool} val2 = \textbf{false};}
+	  \end{itemize}
+	  \item una \emph{stringa} di caratteri:
+	  \begin{itemize}
+	    \item \texttt{\textbf{String} yoda = \structure{"There is no try!"};}
+	  \end{itemize}
+	\end{enumerate}
+      \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Variabili (III)}
+
+  Una variable:
+  \begin{itemize}
+    \item Sono un ``\emph{contenitore}'' di informazioni (= un certo numero di bytes allocati nella 
+	  memoria volatile del computer (RAM));
+    \item Contraddistinte da un identificatore, negli esempi di prima \texttt{i}, \texttt{pi}, 
+	  \texttt{yoda}, $\dots$
+	  (\emph{case sensitive} \texttt{pippo} $\neq$ \texttt{Pippo} $\neq$ \texttt{PIPPO}); 
+    \item Nei linguaggi fortemente tipizzati hanno un \textbf{tipo}, negli esempi di prima 
+	  \texttt{\textbf{int}}, \texttt{\textbf{double}}, \texttt{\textbf{String}}, $\dots$;
+  \end{itemize}
+
+\end{frame}
+
+\subsection[Dichiarazione e assegnamento]{Dichiarazione e assegnamento}
+
+\begin{frame}{Dichiarazione e assegnamento}
+
+  Le Variabilo possono essere create con la \textbf{dichiarazione}:
+  \begin{itemize}
+    \item \textbf{\structure{dichiarazione}}: \texttt{\textbf{int} i;} (\emph{specifica} il tipo di un identificatore);
+    \item \textbf{\structure{assegnamento}}:  \texttt{i = 1;} (\emph{assegna} un valore a un identificatore);
+    \item \textbf{\structure{inizializzazione}}: primo assegnamento \texttt{\textbf{int} i = 1;} (dichiarazione + inizializzazione);
+  \end{itemize}
+
+\end{frame}

@@ -1,0 +1,85 @@
+\title[Laboratorio di Informatica - Lezione 1]{Laboratorio di Informatica \\ Lezione 1}
+\author[Cristian Consonni]{Cristian Consonni}
+\date[16/09/2015]{16 settembre 2015}
+\institute[UniTN]{Università degli Studi di Trento}
+\pgfdeclareimage[height=1.25 cm]{logo}{img/logo_unitn.png}
+\pgfdeclareimage[height=0.65 cm]{dblogo}{img/logo-color.png}
+% \logo{\pgfuseimage{dblogo}}
+
+\newcommand{\btVFill}{\vskip0pt plus 1filll}
+
+\setbeamercolor{structure}{fg=cyan!90!black}
+
+\newenvironment{variableblock}[3]{%
+\setbeamercolor{block body}{#2}
+\setbeamercolor{block title}{#3}
+\begin{block}{#1}}{\end{block}}
+
+% \newtcbox{\myovalbox}{boxrule=0pt,arc=3pt,boxsep=0pt,left=3pt,right=3pt,top=3pt,bottom=3pt}
+
+% \newenvironment<>{problock}[1]{%
+%   \begin{actionenv}#2%
+%       \def\insertblocktitle{#1}%
+%       \par%
+%       \mode<presentation>{%
+%        %\addtobeamertemplate{block}{\pgfsetfillopacity{2}}{\pgfsetfillopacity{2}}
+%        \setbeamercolor{block title}{bg=white,fg=orange}
+%        \setbeamercolor{block body}{bg=white}
+%      }%
+%       \usebeamertemplate{block begin}}
+%     {\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=0.50\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\inserttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=0.25\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+\makeatletter
+\setbeamertemplate{headline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+  \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+\makeatother
+
+\defbeamertemplate*{title page}{customized}[1][]
+{
+  \begin{center}
+    \begin{variableblock}{}{}{bg=blue}
+      \begin{center}
+	\usebeamerfont{title}\inserttitle\par
+      \end{center}
+    \end{variableblock}
+  \end{center}
+
+  \begin{center}
+    \begin{minipage}{1.0\textwidth}
+      \begin{center}
+	Cristian Consonni
+
+	\begin{scriptsize}
+	  \insertdate
+	\end{scriptsize}
+
+      \end{center}
+    \end{minipage}
+  \end{center}
+}

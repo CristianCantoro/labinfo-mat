@@ -1,0 +1,12 @@
+*/*.backup
+*/*.log
+*/*.aux*
+*/*.nav*
+*/*.d
+*/*.fls
+*/*.out
+*/*.out*
+*/*.pdf
+*/*.snm
+*/*.toc*
+*/sections/*.backup

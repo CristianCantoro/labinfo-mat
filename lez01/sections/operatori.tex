@@ -1,0 +1,77 @@
+\subsection[Definizione]{Definizione}
+
+
+\begin{frame}{Operatori (I)}
+  
+  Definizione:\footnote{da \url{https://en.wikipedia.org/wiki/Operator_(computer_programming)}}
+  \begin{quote}
+    «[Operator are] constructs which behave generally like functions, but which differ syntactically 
+      or semantically from usual functions»
+  \end{quote}
+\end{frame}
+
+\begin{frame}{Operatori (II)}
+
+  Gli operatori:
+  \begin{itemize}
+    \item funzioni disponibili in maniera predefinita all'interno di un linguaggio (ce ne sono molte altre);
+    \item ritornano un risultato che avrà un certo \textbf{tipo};
+    \item \textbf{notazione infissa} (\emph{infix notation}) operatore inserito tra gli operandi, ad es. \texttt{2 + 2};
+    \item \textbf{arietà} (o \textbf{adicità}) (numero di argomenti, v. \emph{funzione variadica}):
+      \begin{itemize}
+	\item \textbf{binari}: \texttt{$+$} (addizione), \texttt{$>$} (maggiore), \texttt{$<=$} (minore uguale),
+	      \texttt{$\&$} (\emph{bitwise and}), \texttt{$=$} (assegnamento), \texttt{$[]$} (\emph{bitwise and});
+	\item \textbf{unari}: \texttt{$-$} (sottrazione), \texttt{$\!$} (negazione), \texttt{$++$} (decremento);
+	\item (in alcuni linguaggi \alert{ma non in Java} tramite l'\emph{overload} possono essere estese le funzionalità
+	      di un operatore);
+      \end{itemize}  
+  \end{itemize}
+\end{frame}
+
+\subsection[Operatori aritmetici]{Operatori aritmetici e booleani}
+
+\begin{frame}{Operatori aritmetici}
+  \begin{columns}[T]
+    \begin{column}[T]{4cm}
+      Date tre variabili:
+      \begin{itemize}
+	\item \texttt{\textbf{int} x = 12;}
+	\item \texttt{\textbf{int} y = 5;}
+	\item \texttt{\textbf{int} z = 0;}
+      \end{itemize}
+    \end{column}
+    \begin{column}[T]{7cm}
+      \begin{itemize}[<+->]
+	\item \texttt{$+$}, \texttt{$-$}, \texttt{$*$} funzionano come vi aspettate
+	\item \texttt{$/$} \alert{\textbf{attenzione!}} \texttt{k = x / y;}
+	\item \texttt{$\%$} modulo (resto della divisione)
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\begin{frame}{Operatori booleani}
+  Anche in questo caso funziona tutto normalmente:
+  \begin{table}[h]
+  \centering
+    \begin{tabular}{|c|c|C{1.5cm}|C{1.5cm}|C{1.5cm}|}
+      \hline
+      $p$ & $q$ & $\neg p$ \newline (\texttt{!p}) & $p \wedge q$  \newline (\texttt{p \&\& q}) & $p \vee q$ \newline (\texttt{p || q}) \\ \hline
+      $T$ & $T$ & $F$     & $T$       & $T$ \\ \hline
+      $T$ & $F$ & $F$     & $F$       & $T$ \\ \hline
+      $F$ & $T$ & $T$     & $F$       & $T$ \\ \hline
+      $F$ & $F$ & $T$     & $F$       & $F$ \\ \hline
+    \end{tabular}
+  \end{table}
+
+  \begin{itemize}[<+->]
+    \item \alert{\textbf{attenzione!}} ai valori di verità delle variabili non booleane;
+    \item \texttt{$==$} operatore di confronto;
+    \item \texttt{a.equals(b)} confronto tra stringhe (\texttt{\texttt{String}});
+  \end{itemize}
+
+\end{frame}
+
+
+

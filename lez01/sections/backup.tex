@@ -1,0 +1,71 @@
+
+\begin{frame}
+\begin{Huge}
+Backup 
+\end{Huge}
+\end{frame}
+
+\pgfdeclareimage[width=0.8\paperwidth]{4square}{img/Foursquare_checkins.png}
+\begin{frame}{Foursquare check-ins}
+  \begin{center}
+    \pgfuseimage{4square}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Condinational Random Field}
+  \begin{center}
+    \begin{variableblock}{Conditional Random Fields}{}{bg=blue}
+      Let $G = (V, E)$ be a graph s.t.
+      \begin{equation}
+	\mathcal{Y} = (\mathcal{Y}_v)_{v\in V} 
+      \end{equation}
+      so that $\mathcal{Y}$ is indexed by the vertices of $G$.
+      
+      Then $(\mathcal{X}, \mathcal{Y})$ is a \emph{conditional random field} when the random variables 
+      $\mathcal{Y}_v$, conditioned on $\mathcal{X}$, obey the \alert{Markov property}
+      with respect to the graph:
+      \begin{equation}
+	P(\mathcal{Y}_v |\mathcal{X}, \mathcal{Y}_w, w \neq v) = P(\mathcal{Y}_v |\mathcal{X}, \mathcal{Y}_w, w \sim v)
+      \end{equation}
+      where $\mathit{w} \sim v$ means that $w$ and $v$ are neighbors in $G$.
+    \end{variableblock}
+    %What this means is that a CRF is an undirected graphical model whose nodes can be divided into exactly two disjoint 
+    %sets \boldsymbol{X} and \boldsymbol{Y}, the observed and output variables, respectively;
+    %the conditional distribution p(\boldsymbol{Y}|\boldsymbol{X}) is then modeled.
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Efficiency}
+  \begin{enumerate}
+    \item identify candidate POI mentions:
+    \begin{itemize}
+      \item the algorithm has linear complexity $O(n)$, wgere $n$ is the number of words in tweet, regardless of the size of POI inventory;
+    \end{itemize}
+    \item Feature extraction:
+    \begin{itemize}
+      \item the cost is driven by the cost of POS-tagging;
+    \end{itemize}
+  \end{enumerate}
+  The system is able to process $400~\textmd{tweets}/s$.
+\end{frame}
+
+\begin{frame}{Effect of the Individual components in $Lex+Gra$}
+
+  \begin{table}[htbp]
+    \begin{tabular}{|l|r|r|r|}
+      \hline
+      Features & \multicolumn{1}{c|}{$Pr$} & \multicolumn{1}{c|}{$Re$} & \multicolumn{1}{c|}{$F_1$} \\ \hline
+      $Lex+Gra$ & 0.6895 & 0.5511 & 0.6126 \\ \hline
+      $Lex+Gra - ContextWindow$ & 0.6360 & 0.5420 & 0.5852 \\ \hline
+      $Lex+Gra - LRContextWindow$ & 0.6520 & 0.5401 & 0.5908 \\ \hline
+      $Lex+Gra - TimeTrend$ & 0.6736 & 0.5310 & 0.5939 \\ \hline
+      $Lex+Gra - ClosestVerb$ & 0.6628 & 0.5237 & 0.5851 \\ \hline
+      $Lex+Gra - ClosestTrend$ & 0.6590 & 0.5255 & 0.5848 \\ \hline
+      $Lex+Gra - BILOU$ & 0.6522 & 0.5201 & 0.5787 \\ \hline
+    \end{tabular}
+    \caption{Effect of the individual components in the $Lex+Gra$ feature }
+    \label{individual_components_LexGra}
+  \end{table}
+
+\end{frame}
