@@ -316,7 +316,7 @@
 	\node [block, text width=1.75cm, fill=blue!20!white, text width=3.5cm] (init) {\texttt{int num = 20;}\\\texttt{int count = 0;}};
 	\node [block, below of=init, fill=red!50, text width=3.5cm, node distance=1.5cm] (comandi) {\texttt{num = num / 2;}\\ \texttt{count = count + 1;}};
 	% \node [draw,circle,minimum size=1mm,inner sep=0pt,outer sep=0pt,fill=black, below of=init] (vuoto) {};
-	\node [decision, below of=comandi] (decide) {$num \; \mathit{mod} \; 2 \neq 0$};
+	\node [decision, below of=comandi] (decide) {\texttt{\textbf{while}}\\$num \; \mathit{mod} \; 2 \neq 0$};
 	\node [block, below of=decide, node distance=2cm] (stop) {resto del programma};
 	% Draw edges
 	\path [line] (init) -- (comandi);

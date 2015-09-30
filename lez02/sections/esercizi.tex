@@ -8,12 +8,12 @@
   \begin{quote}
    «99 bottles of beer on the wall, 99 bottles of beer.\newline
    Take one down, pass it around, 98 bottles of beer on the wall \newline
-   99 bottles of beer on the wall, 99 bottles of beer.\newline
-   Take one down, pass it around, 98 bottles of beer on the wall  \newline
+   98 bottles of beer on the wall, 98 bottles of beer.\newline
+   Take one down, pass it around, 97 bottles of beer on the wall  \newline
    ...\newline
    1 bottle of beer on the wall, 1 bottle of beer.\newline
    Take one down, pass it around, no more bottles of beer on the wall\newline
-   There no more bottles of beer on the wall, no more bottles of beer.»
+   There are no more bottles of beer on the wall, no more bottles of beer.»
   \end{quote}
 
 \end{frame}
@@ -94,30 +94,44 @@
 
 \end{frame}
 
-\begin{frame}{Esercizi (VI)}
+\begin{frame}{Esercizi (VI) (a)}
   \begin{itemize}
-    \item Metodo della bisezione
+    \item Metodo della bisezione.
+    \item Per approfondimenti:\newline
+    \begin{scriptsize}
+      \url{https://ece.uwaterloo.ca/~dwharder/NumericalAnalysis/10RootFinding/bisection/bisection.gif}
+    \end{scriptsize}
   \end{itemize}
-  \begin{tiny}
-    \url{https://ece.uwaterloo.ca/~dwharder/NumericalAnalysis/10RootFinding/bisection/bisection.gif}
-  \end{tiny}
+
+  Utilizzate come funzione la seguente:
+  \begin{equation}
+    f(x) = x^3 - x - 2
+  \end{equation}
+  cercate una radice (ovvero un numero $r$ tale che $f(r) = 0$) nell'intervallo $[a, b]$ con $a=1, b=2$.
+
+\end{frame}
+
+\begin{frame}{Esercizi (VI) (b)}
+  \begin{itemize}
+    \item Metodo della bisezione: pseudocodice
+  \end{itemize}
 
   \begin{scriptsize}
     \begin{center}
       \begin{minipage}{8cm}
 	\begin{algorithmic}[1]
 	  \Require Function $f$, endpoint values $a, b$, tolerance $\varepsilon$, maximum iterations $N_{MAX}$
-		   $a < b$, either $f(a) < 0$ and $f(b) > 0$ or $f(a) > 0$ and $f(b) < 0$
+		    $a < b$, either $f(a) < 0$ and $f(b) > 0$ or $f(a) > 0$ and $f(b) < 0$
 	  \Ensure value which differs from $a$ root of $f(x)=0$ by less than $\varepsilon$
     
-	  \State $N \gets 1$
-	  \While{$N \leq N_{MAX}$}
+	  \State $n \gets 1$
+	  \While{$n \leq N_{MAX}$}
 	    \State $c \gets (a + b)/2$
-	    \If{$f(c) = 0 \lor (b – a)/2 < \varepsilon$}
+	    \If{$(f(c) = 0) \lor ((b – a)/2) < \varepsilon$}
 	      \State \texttt{\textbf{print}}(c)
 	      \State \Return;
 	    \EndIf
-	    \State $N \gets N + 1$
+	    \State $n \gets n + 1$
 	    \If{$sign(f(c)) = sign(f(a))$}
 	      \State $a \gets c$
 	    \Else 
@@ -133,7 +147,7 @@
 \end{frame}
 
 \begin{frame}{Esercizi (VII)}
-  Test di primalità
+  Test di primalità:
   \begin{itemize}
     \item Scrivere un programma che, dato un intero positivo, verifichi se quel numero è primo oppure no.
   \end{itemize}
