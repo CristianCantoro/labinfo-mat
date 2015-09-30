@@ -64,7 +64,7 @@
   \begin{center}
     \begin{tikzpicture}[node distance = 1cm, auto]
 	% Place nodes
-	\node [block, text width=1.75cm, fill=blue!20!white] (init) {\texttt{int n = 1;}\\\texttt{int s = 0;}};
+	\node [block, text width=1.75cm, fill=blue!20!white] (init) {\texttt{int n = 4;}};
 	\node [decision, below of=init] (decide) {\textbf{\texttt{if}} $n \; \mathit{mod} \; 2 = 0$};
 	\node [block, left  of=decide, node distance=4cm, fill=red!50, text width=3cm, text centered] (comandi_else){Il numero è dispari};
 	\node [block, right of=decide, node distance=4cm, fill=red!50, text width=3cm, text centered] (comandi_if)  {Il numero è pari};

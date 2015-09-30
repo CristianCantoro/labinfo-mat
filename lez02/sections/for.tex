@@ -3,7 +3,7 @@
   detta \textbf{indice} entro un intervallo di valori, con un dato \textbf{incremento}
 
   \begin{JavaCodePlain}[commandchars=\\!|]
-    \Word!for| (\Blue!inzializzazione;| \Green!condizione| \Violet!incremento|) {
+    \Word!for| (\Blue!inzializzazione;| \Green!condizione;| \Violet!incremento|) {
       comandi;
     }
   \end{JavaCodePlain}
@@ -101,15 +101,21 @@
       comandi;
     }
   \end{JavaCodePlain}
+  \begin{itemize}
+    \item[$\Rightarrow$] Al termine del ciclo $i$ vale $100$.
+  \end{itemize}
 
   \begin{itemize} 
     \item Nel ciclo $j$ assume i valori $j = 1, 2, 4, \dots$
-  \end{itemize}  
+  \end{itemize}
   \begin{JavaCodePlain}[commandchars=\\!|]
     \Word!for| (\Blue!int j = 1;| \Green!j < 1024;| \Violet!j = j * 2|) {
       comandi;
     }
   \end{JavaCodePlain}
+  \begin{itemize}
+   \item[$\Rightarrow$] Al termine del ciclo $j$ vale $1024$.
+  \end{itemize}
   
   \begin{itemize} 
     \item Nel ciclo $k$ assume i valori $k = 10, 9, 8, \dots$
@@ -119,6 +125,9 @@
       comandi;
     }
   \end{JavaCodePlain}
+  \begin{itemize}
+   \item[$\Rightarrow$] Al termine del ciclo $k$ vale $0$.
+  \end{itemize}
 
   Esistono gli operatori \texttt{+=}, \texttt{-=}, \texttt{*=}, ma vi consiglio di scrivere
   l'incremento in modo espicito per evitare errori.
@@ -138,7 +147,7 @@
 
   \begin{JavaCodePlain}[commandchars=\\!|]
     \Blue!inzializzazione;|
-    \Word!for| (\Green!condizione|) {
+    \Word!while| (\Green!condizione|) {
       comandi;
       \Violet!incremento;|
     }

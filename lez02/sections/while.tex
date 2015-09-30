@@ -143,8 +143,8 @@
       ...  & ...   & ...    & ...              \\ \hline
       99   & $99$  & $4851$ & sì               \\ \hline
       100  & $100$ & $4950$ & sì               \\ \hline
-      101  & $101$ & $4950$ & no               \\ \hline
-      $-$  & $101$ & $4950$ &                  \\  \hline   
+      101  & $101$ & $5050$ & no               \\ \hline
+% %       $-$  & $101$ & $5050$ &                  \\  \hline   
     \end{tabular}
   \end{table}
 
@@ -237,6 +237,7 @@
 	\Word!while| (\Green!n <= 50|) {
 	  \Green!// salto il caso n = 3|
 	  \Word!if| (n == 3) {
+	    n = n + 1;
 	    \Word!continue|;
 	  }
 	  s = s + n;

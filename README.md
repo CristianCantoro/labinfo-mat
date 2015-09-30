@@ -1,5 +1,7 @@
 # labinfo-mat
-Sorgenti delle slide per le esercitazione di laboratorio di Matematica
+Sorgenti delle slide per le esercitazione di laboratorio di Matematica.
+
+Slide su [disi.unitn.it/~consonni/teaching/](http://disi.unitn.it/~consonni/teaching/).
 
 ## Indice
 
