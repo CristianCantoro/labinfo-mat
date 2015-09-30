@@ -1,0 +1,328 @@
+\begin{frame}{Iterazione (I)}
+  Definzione di iterazione\footnote{\url{https://it.wikipedia.org/wiki/Iterazione\#Informatica}}:
+  \begin{quote}
+    «L'\textbf{iterazione}, chiamata anche \textbf{ciclo} o con il termine inglese \textbf{loop}, 
+    è una struttura di controllo [...]  che ordina all'elaboratore di eseguire ripetutamente 
+    una sequenza di istruzioni, solitamente fino al verificarsi di particolari condizioni logiche specificate.»
+  \end{quote}
+\end{frame}
+
+\begin{frame}{Iterazione (II)}
+  L'iterazione è utile per ``tradurre'' sommatorie e prodotturie:
+  \begin{itemize}
+   \item \[S(100) = \sum_{n=1}^{n=100} n\]
+	 calcola la somma di $n$ \textbf{per $n$ che va da  $1$ a $100$}
+	 (calcola la somma dei primi $100$ interi)
+   \item \[n! = \prod_{i=1}^{i=n} i\]
+	 calcola il prodotto di $i$ \textbf{per $i$ che va da  $1$ a $n$}
+	 (il fattoriale di $n$ \`e il prodotto dei numeri da $1$ a $n$.)
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Iterazione (III)}
+  L'iterazione traduce naturalmente formule ricorsive:
+  \begin{itemize}
+    \item Metodo della bisezione: metodo che trova numericamente gli zeri di una funzione continua;
+
+    \item Metodo per il calcolo della radice quadrata di Newton.
+    Si può calcolare la radice quadrata di un numero $z$ nel modo seguente:
+    \begin{equation*}
+      \left\{\begin{aligned}
+	  & x_0 = 0.5\\
+	  & x_{n +1} = 0.5 \cdot {x_n} (3  - zx^2_n)
+      \end{aligned}\right.
+    \end{equation*}
+    \begin{equation*}
+     \lim_{n \to \infty} x_{n} = \sqrt{z}
+    \end{equation*}
+    Posso calcolare l'errore compiuto al termine $n$-esimo, $x_{n}$ come $\varepsilon_{n} = |x^{2}_{n} - z|$,
+    Posso calcolare $\sqrt{z}$ a una data precisione: ``prosegui a calcolare nuovi termini della successione $x_{n}$
+    \textbf{finché l'errore non è più piccolo di $10^{-3}$}''.
+
+
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Ciclo While (I)}
+  \textbf{Finché} la condizione è \textbf{vera} esegui una certa operazione (ciclo \textbf{\texttt{while-do}}
+  o semplicemente \textbf{\texttt{while}}):
+  \begin{columns}[T]
+    \begin{column}[T]{5cm}
+      Pseudocodice:
+      \begin{algorithmic}[1]     
+	\State $s \gets 0$
+	\State $n \gets 1$
+	\While{$n \leq 100$}
+	  \State $s \gets s + n$
+	  \State $n \gets n + 1$
+	\EndWhile
+      \end{algorithmic}
+    \end{column}
+    \begin{column}[T]{5cm}
+      Java:
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	int s = 0;
+	int n = 1;
+	\Word!while| (\Green!n <= 100|) {
+	  \Red!s = s + n;|
+	  \Red!n = n + 1;|
+	}
+      \end{JavaCodePlain}
+    \end{column}
+  \end{columns}
+  ${}$\\
+  Nel momento in cui la condizione all'interno del while diventa falsa si \textbf{esce} dal ciclo.
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Ciclo While (II)}
+  \textbf{Finché} la condizione è \textbf{vera} esegui una certa operazione (ciclo \textbf{\texttt{while-do}}):
+  \begin{columns}[T]
+    \begin{column}[T]{5cm}
+      Pseudocodice:
+      \begin{algorithmic}[1]     
+	\While{condizione}
+	  \State comandi
+	\EndWhile
+      \end{algorithmic}
+    \end{column}
+    \begin{column}[T]{5cm}
+      Java:
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	\Word!while| (\Green!condizione|) {
+	  \Red!comandi;|
+	}
+      \end{JavaCodePlain}
+    \end{column}
+  \end{columns}
+  ${}$\\
+  Nel momento in cui la condizione all'interno del while diventa falsa si \textbf{esce} dal ciclo.
+\end{frame}
+
+\begin{frame}{Ciclo While (III)}
+
+  % Define block styles
+  \tikzstyle{decision} = [diamond, draw, fill=green!20,text width=4.5em, text
+                          badly centered, node distance=3cm, inner sep=0pt]
+  \tikzstyle{block} = [rectangle, draw, rounded corners]
+  \tikzstyle{line} = [draw, -latex']
+
+  Diagrama di flusso dell'istruzione While:
+  \begin{center}
+    \begin{tikzpicture}[node distance = 1cm, auto]
+	% Place nodes
+	\node [block, text width=1.75cm, fill=blue!20!white] (init) {\texttt{int n = 1;}\\\texttt{int s = 0;}};
+	\node [draw,circle,minimum size=1mm,inner sep=0pt,outer sep=0pt,fill=black, below of=init] (vuoto) {};
+	\node [decision, below of=init] (decide) {$n \leq 100$};
+	\node [block, below of=decide, node distance=2cm] (stop) {resto del programma};
+	\node [block, right of=decide, node distance=4cm, fill=red!50, text width=1.75cm] (comandi) {\texttt{s = s + n;}\\ \texttt{n = n + 1;}};
+	% Draw edges
+	\path [line] (init) -- (decide);
+	\path [draw] (comandi)  --++ (0,2) |- (vuoto);
+	\path [line] (decide) -- node {sì}(comandi);
+	\path [line] (decide) -- node {no}(stop);
+    \end{tikzpicture}   
+  \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Ciclo While (IV)}
+
+  Esecuzione del ciclo passo-passo:
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{step} & \textbf{$n$} & \textbf{$s$} & \textbf{$n \leq 100 $?} \\ \hline
+      $-$  & $1$   & $0$    & $-$              \\ \hline
+      1    & $1$   & $0$    & sì               \\ \hline
+      2    & $2$   & $1$    & sì               \\ \hline
+      3    & $3$   & $3$    & sì               \\ \hline
+      4    & $4$   & $6$    & sì               \\ \hline
+      ...  & ...   & ...    & ...              \\ \hline
+      99   & $99$  & $4851$ & sì               \\ \hline
+      100  & $100$ & $4950$ & sì               \\ \hline
+      101  & $101$ & $4950$ & no               \\ \hline
+      $-$  & $101$ & $4950$ &                  \\  \hline   
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Ciclo While (VI)}
+  Attenzione agli estremi dei cicli:
+  \begin{columns}[T]
+    \begin{column}[T]{5cm}
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	int n = 1;
+	\Word!while| (\Green!n <= 10|) {
+	  \Word!println|(\String!"Ciao, mondo\bang"|); 
+	  n = n + 1; 
+	}
+      \end{JavaCodePlain}
+      Scrive \texttt{\String{Ciao, mondo!}} \textbf{10} volte.
+    \end{column}
+    \begin{column}[T]{5cm}
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	int n \Red!= 0|;
+	\Word!while| (\Green!n \Red!< 10||) {
+	  \Word!println|(\String!"Ciao, mondo\bang"|); 
+	  n = n + 1; 
+	}
+      \end{JavaCodePlain}
+      Scrive \texttt{\String{Ciao, mondo!}} \textbf{10} volte.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Ciclo While (VI)}
+  Se la condizione non diventa mai falsa, allora il ciclo \textbf{non termina mai}.
+  \begin{columns}[T]
+    \begin{column}[T]{5cm}
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	int s = 0;
+	int n = 99;
+	\Word!while| (\Green!n \bang= 0|) {
+	  s = s + n; 
+	  \Green!// n = 99, \dots, 1,\Red!-1, \dots||
+	  n = n - 2; 
+	}
+      \end{JavaCodePlain}
+    \end{column}
+    \begin{column}[T]{5cm}
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	\Red!int p = 0;|
+	int n = 1;
+	\Word!while| (\Green!p < 100|) {
+	  p = p * n; \Green!// p == 0|
+	  n = n + 1;
+	}
+      \end{JavaCodePlain}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Ciclo While (VII)}
+  \begin{columns}[T]
+    \begin{column}[T]{5cm}
+      Se la condizione è \textbf{sempre vera}, allora il ciclo non termina mai:
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	\Word!while| (\Green!\textbf!true||) {
+	  s = s + n; 
+	  n = n + 1; 
+	}
+      \end{JavaCodePlain}
+      Il comando $\Word{\textbf{break}}$ permette di uscire dal ciclo.
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	int s = 0;
+	int n = 1;
+	\Word!while| (\Green!n <= 50|) {
+	  \Green!// se n = 33 esco|
+	  \Word!if| (n == 33) {
+	    \Word!break|;
+	  }
+	  s = s + n;
+	  n = n + 1;
+	}
+      \end{JavaCodePlain}
+
+    \end{column}
+    \begin{column}[T]{5cm}
+      Se devo saltare dei valori allora posso usare il comando $\Word{\textbf{continue}}$:
+      \[ s = \sum_{i=1, i \neq 3}^{50} i \]
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	int s = 0;
+	int n = 1;
+	\Word!while| (\Green!n <= 50|) {
+	  \Green!// salto il caso n = 3|
+	  \Word!if| (n == 3) {
+	    \Word!continue|;
+	  }
+	  s = s + n;
+	  n = n + 1;
+	}
+      \end{JavaCodePlain}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Nuovo progetto Eclipse}
+  \begin{enumerate}
+   \item Aprire Eclipse
+   \item \emph{File} $\rightarrow$ \emph{New} $\rightarrow$ \emph{Project} $\rightarrow$ \emph{Java Project}
+   \item Inserire il nome e click su \emph{Finish}
+   \item Click destro su \emph{src} $\rightarrow$ \emph{New} $\rightarrow$ \emph{Class\dots}
+   \item Inserire il nome e check su \newline
+	  \texttt{public static void main(String[] args)}
+   \item Click su \emph{Finish}
+  \end{enumerate}
+  Se avete difficoltà o problemi scrivetemi una mail!
+
+\end{frame}
+
+\begin{frame}{Esercizi (I)}
+  \begin{enumerate}
+   \item Scrivete un programma che stampi la stringa \texttt{\String{Ciao, mondo!}} a schermo per 10 volte;
+   \item Scrivere un programma che stampi tutti i numeri pari fino a 1000;
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Ciclo Do-While (I)}
+  Esegui una certa operazione \textbf{finché} la condizione è \textbf{vera} (ciclo \textbf{\texttt{do-while}}):
+  \begin{columns}[T]
+    \begin{column}[T]{5cm}
+      Pseudocodice:
+      \begin{algorithmic}[1]     
+	\State $num \gets 20$
+	\State $count \gets 0$
+	\Do
+	  \State $num \gets num / 2$
+	  \State $count \gets count + 1$
+	\DoWhile{$num \; \mathit{mod} \; 2 \neq 0$}
+      \end{algorithmic}
+    \end{column}
+    \begin{column}[T]{5cm}
+      Java:
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	int num = 20;
+	int count = 0;
+	\Word!do| {
+	  num = num / 2;
+	  count = count + 1;
+	} \Word!while| (\Green!num \% 2 \bang= 0|)
+      \end{JavaCodePlain}
+    \end{column}
+  \end{columns}
+  ${}$\newline
+  La differenza fondamentale tra la forma \texttt{while} e quella \texttt{do-while} 
+  è che con il \texttt{do-while} i comandi all'interno del ciclo vengono 
+  \textbf{sempre} eseguiti \textbf{almeno una volta}.
+\end{frame}
+
+\begin{frame}{Ciclo Do-While (II)}
+
+  % Define block styles
+  \tikzstyle{decision} = [diamond, draw, fill=green!20,text width=5.5em, text
+                          badly centered, node distance=2cm, inner sep=0pt, font=\scriptsize]
+  \tikzstyle{block} = [rectangle, draw, rounded corners]
+  \tikzstyle{line} = [draw, -latex']
+
+  Diagrama di flusso dell'istruzione Do-While:
+  \begin{center}
+    \begin{tikzpicture}[node distance = 1cm, auto]
+	% Place nodes
+	\node [block, text width=1.75cm, fill=blue!20!white, text width=3.5cm] (init) {\texttt{int num = 20;}\\\texttt{int count = 0;}};
+	\node [block, below of=init, fill=red!50, text width=3.5cm, node distance=1.5cm] (comandi) {\texttt{num = num / 2;}\\ \texttt{count = count + 1;}};
+	% \node [draw,circle,minimum size=1mm,inner sep=0pt,outer sep=0pt,fill=black, below of=init] (vuoto) {};
+	\node [decision, below of=comandi] (decide) {$num \; \mathit{mod} \; 2 \neq 0$};
+	\node [block, below of=decide, node distance=2cm] (stop) {resto del programma};
+	% Draw edges
+	\path [line] (init) -- (comandi);
+	\path [line] (comandi) -- (decide);
+	\path [line] (decide) -- node {no}(stop);
+	\path [line] (decide)  --++ (3,0) node[anchor=south,pos=0.5]{sì} |- (comandi);
+    \end{tikzpicture}   
+  \end{center}
+
+\end{frame}

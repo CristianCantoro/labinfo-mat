@@ -1,0 +1,18 @@
+\frametitle{Analogie tra ciclo \texttt{for} e ciclo \texttt{while}}
+
+  I cicli \textbf{\texttt{for}} e \textbf{\texttt{while}} sono equivalenti. Tutti i cicli \textbf{\texttt{for}}
+  possono essere ``tradotti'' in cicli \textbf{\texttt{while}} e \textbf{viceversa}.
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Word!for| (\Blue!inzializzazione;| \Green!condizione;| \Violet!incremento|) {
+      comandi;
+    }
+  \end{JavaCodePlain}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Blue!inzializzazione;|
+    \Word!for| (\Green!condizione|) {
+      comandi;
+      \Violet!incremento;|
+    }
+  \end{JavaCodePlain}

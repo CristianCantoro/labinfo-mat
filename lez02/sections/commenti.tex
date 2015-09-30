@@ -1,0 +1,81 @@
+\begin{frame}[fragile]\frametitle{Commenti}
+
+  \begin{itemize}
+   \item Commento su singola riga: doppio slash $//$
+  \end{itemize}
+
+  \begin{center}
+    \begin{minipage}[c]{8cm}
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	\Green!// Commento su singola riga|
+	\end{JavaCodePlain}
+    \end{minipage}  
+  \end{center}
+
+  \begin{itemize}
+   \item Commento su singola riga: (apertura) slash + asterisco $/*$ (chiusura) asterisco + slash $*/$
+  \end{itemize}
+
+  \begin{center}
+    \begin{minipage}[c]{8cm}
+      {\color{green!50!black}
+	\begin{verbatim}
+	  /*
+	  Commento multi riga.
+	  Questo commento si può dipanare
+	  su più di una riga
+	  */
+	\end{verbatim}
+      }
+    \end{minipage}  
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Commenti (II)}
+
+  Usate sempre commenti significativi:
+  \begin{itemize}
+   \item {\color{green} OK}:
+  \end{itemize}
+  \begin{center}
+    \begin{minipage}[c]{11cm}
+      {\color{green!50!black}
+	\begin{verbatim}
+	  // inizializzo min a un valore che è sicuramente 
+	  // più piccolo dei valori assunti dal vettore
+	  int min = -1;      
+	\end{verbatim} 
+      }
+    \end{minipage}  
+  \end{center}
+
+  \begin{itemize}
+   \item {\color{red} NO}:
+  \end{itemize}
+  {\color{red!80!black}
+  \begin{center}
+    \begin{minipage}[c]{11cm}
+      \begin{verbatim}
+	// inizializzo min a -1
+	int min = -1;
+      \end{verbatim}
+    \end{minipage}  
+  \end{center}
+  }
+
+\end{frame}
+
+\begin{frame}{Stampa di stringe a schermo}
+  \begin{itemize}
+    \item Concatenazione di stringhe: \newline
+	  \texttt{System.out.println(\String{"Ciao, "} + name + \String{"!"})}
+    \item Print formatted: \newline
+	  \texttt{System.out.printf(\String{"Ciao, \%s!"}, name)}
+      \begin{itemize}
+	\item \texttt{\%d} per stampare \emph{interi} (\texttt{int});
+	\item \texttt{\%f} per stampare \emph{numeri con la virgola} (\texttt{float}, \texttt{double});
+	\item \texttt{\%s} per stampare \emph{stringhe} (\texttt{String});
+      \end{itemize}
+  \end{itemize}
+ 
+\end{frame}

@@ -1,0 +1,138 @@
+\documentclass[10pt]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Berlin}
+  \setbeamertemplate{blocks}[rounded]
+  \setbeamercolor{block title}{bg=gray}
+  \setbeamercovered{transparent}
+}
+
+% %%% Packages %%%
+% Babel and fonts
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+
+% Graphics and images
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg, .eps}
+\usepackage{relsize}
+\usepackage{colortbl}
+
+
+% Math notation and symbols
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{bbold}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+
+\DeclareMathOperator*{\len}{\textbf{length of }}
+
+% \DeclareMathOperator*{\len}{\text{length of }}
+% Backup slides
+\usepackage{appendixnumberbeamer}
+
+% Tables, Colums and the like
+\usepackage{longtable}
+\usepackage{listings}
+
+% Hyperref
+\usepackage{hyperref} 
+
+% Boxes
+\usepackage{fancybox}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usepackage{mdframed}	
+
+% Custom packages
+\usepackage{presmacros}
+
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{alltt}
+\usepackage{mathtools}
+\usepackage{fancyvrb}
+\usepackage{url}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\lstdefinestyle{JavaPlain}{ %
+basicstyle=\scriptsize\ttfamily, % the size of the fonts 
+numbers=left,                   % where to put the line-numbers
+numberstyle=\tiny,      % the size of the fonts that are used for th
+stepnumber=1,                   % the step between two line-numbers
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding 
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen
+fancyvrb=true,
+fvcmdparams=textbf 1 textit 1,
+}
+
+\newcommand\Red[1]{\textcolor{red}{#1}}
+\newcommand\Green[1]{\textcolor{green!50!black}{#1}}
+\newcommand\Blue[1]{\textcolor{blue!60!white}{#1}}
+\newcommand\Violet[1]{\textcolor{violet}{#1}}
+\newcommand\String[1]{\textcolor{blue!80!blue}{#1}}
+\newcommand\Word[1]{\textcolor{purple!90!red}{#1}}
+\newcommand\bang{!}
+
+\newenvironment{JavaCodePlain}[1][]
+  { \VerbatimEnvironment%
+    \begin{Verbatim}[#1]}
+  { \end{Verbatim}  } 
+
+\algdef{SE}[DOWHILE]{Do}{DoWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\input{sections/title.tex}
+
+\input{sections/intro.tex}
+
+\section{Commenti e Stampa a schermo}
+\input{sections/commenti.tex}
+
+\section{Strutture di controllo}
+\input{sections/if.tex}
+
+\section{Ciclo While}
+\input{sections/while.tex}
+
+\section{Ciclo For}
+\input{sections/for.tex}
+
+\section{Esericizi}
+\input{sections/esercizi.tex}
+% \appendix
+% \section*{Backup}
+% \input{99backup/backup.tex}
+
+\end{document}

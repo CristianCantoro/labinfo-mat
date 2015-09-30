@@ -1,0 +1,146 @@
+\begin{frame}[fragile]\frametitle{Ciclo For (I)}
+  Il ciclo \textbf{\texttt{for}} è un altro tipo di interazione dove si scorre una variabile,
+  detta \textbf{indice} entro un intervallo di valori, con un dato \textbf{incremento}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Word!for| (\Blue!inzializzazione;| \Green!condizione| \Violet!incremento|) {
+      comandi;
+    }
+  \end{JavaCodePlain}
+
+  Esempio:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    int s = 0;
+    \Word!for| (\Blue!int n = 1;| \Green!n <= 100;| \Violet!n++|) {
+      s = s + n;
+    }
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Ciclo For (II)}
+  Il ciclo \textbf{\texttt{for}} è un altro tipo di interazione dove si scorre una variabile,
+  detta \textbf{indice} entro un intervallo di valori, con un dato \textbf{incremento}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Word!for| (\Blue!inzializzazione;| \Green!condizione;| \Violet!incremento|) {
+      comandi;
+    }
+  \end{JavaCodePlain}
+
+  Note:
+  \begin{itemize}
+   \item nell'\texttt{\Blue{inzializzazione;}} potete \textbf{dichiarare} una variabile;
+   \item Per l'\texttt{\Violet{incremento;}} potete usare step anche diversi da 1;
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Ciclo For (III)}
+  Quando la condizione è \textbf{falsa} il ciclo viene interrotto:
+  \begin{columns}[T]
+    \begin{column}[T]{5cm}
+      Pseudocodice:
+      \begin{algorithmic}[1]     
+	\State $s \gets 0$
+	\For{$n \gets 1$ to $100$ by $1$}
+	  \State $s \gets s + n$
+	\EndFor
+      \end{algorithmic}
+    \end{column}
+    \begin{column}[T]{6cm}
+      Java:
+      \begin{JavaCodePlain}[commandchars=\\!|]
+	int s = 0;
+	\Word!for| (\Blue!int n = 1;| \Green!n <= 100;| \Violet!n++|) {
+	  s = s + n;
+	}
+      \end{JavaCodePlain}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Ciclo For (IV)}
+
+  % Define block styles
+  \tikzstyle{decision} = [diamond, draw, fill=green!20,text width=3.5em, text
+                          badly centered, node distance=1.5cm, inner sep=0pt, font=\scriptsize]
+  \tikzstyle{block} = [rectangle, draw, rounded corners]
+  \tikzstyle{line} = [draw, -latex']
+
+  Diagrama di flusso dell'istruzione for:
+  \begin{center}
+    \begin{tikzpicture}[node distance = 1cm, auto]
+	% Place nodes
+	\node [block, fill=blue!20!white]                                   (init)      {\texttt{int s = 0;}};
+	\node [block, below of=init, fill=blue!5!white, node distance=1cm] (forinit)   {\texttt{int n = 1;}};
+	\node [decision, below of=forinit]                                  (decide)    {$n \leq 100$};
+	\node [block, fill=red!50, below of=decide, node distance=1.5cm]    (comandi)   {\texttt{comandi;}};
+	\node [block, fill=violet!30!white, below of=comandi]               (incremento){\texttt{i++}};
+	\node [circle, below of=incremento]         (vuoto) {};
+	\node [block, right of=vuoto, node distance=3cm]                    (stop) {resto del programma};
+	% Draw edges
+	\path [line] (init)       -- (forinit);
+	\path [line] (forinit)    -- (decide);
+	\path [line] (decide)     --  node {sì}(comandi);
+	\path [line] (comandi)    -- (incremento);
+	\path [line] (decide)  --++ (3,0) node[anchor=south,pos=0.5]{no} -| (stop);
+	\path [line] (incremento)  --++ (0,-1) --++ (-2,0)  |- (decide);
+    \end{tikzpicture}   
+  \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Esempi di ciclo \texttt{for}}
+
+  \begin{itemize} 
+    \item Nel ciclo $i$ assume i valori $i = 0, 5, 10, 15, \dots$
+  \end{itemize}
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Word!for| (\Blue!int i = 0;| \Green!i < 100;| \Violet!i = i + 5|) {
+      comandi;
+    }
+  \end{JavaCodePlain}
+
+  \begin{itemize} 
+    \item Nel ciclo $j$ assume i valori $j = 1, 2, 4, \dots$
+  \end{itemize}  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Word!for| (\Blue!int j = 1;| \Green!j < 1024;| \Violet!j = j * 2|) {
+      comandi;
+    }
+  \end{JavaCodePlain}
+  
+  \begin{itemize} 
+    \item Nel ciclo $k$ assume i valori $k = 10, 9, 8, \dots$
+  \end{itemize}    
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Word!for| (\Blue!int k = 10;| \Green!k > 0;| \Violet!k--|) {
+      comandi;
+    }
+  \end{JavaCodePlain}
+
+  Esistono gli operatori \texttt{+=}, \texttt{-=}, \texttt{*=}, ma vi consiglio di scrivere
+  l'incremento in modo espicito per evitare errori.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Analogie tra ciclo \texttt{for} e ciclo \texttt{while}}
+
+  I cicli \textbf{\texttt{for}} e \textbf{\texttt{while}} sono equivalenti. Tutti i cicli \textbf{\texttt{for}} 
+  possono essere ``tradotti'' in cicli \textbf{\texttt{while}} e \textbf{viceversa}.
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Word!for| (\Blue!inzializzazione;| \Green!condizione;| \Violet!incremento|) {
+      comandi;
+    }
+  \end{JavaCodePlain}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Blue!inzializzazione;|
+    \Word!for| (\Green!condizione|) {
+      comandi;
+      \Violet!incremento;|
+    }
+  \end{JavaCodePlain}
+\end{frame}

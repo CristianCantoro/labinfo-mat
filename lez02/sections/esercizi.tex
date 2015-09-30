@@ -1,0 +1,143 @@
+\subsection[Esercizi]{Esercizi}
+
+\begin{frame}{Esercizi (I)}
+  \begin{itemize}
+   \item Scrivete un programma che stampi la canzone popolare inglese ``\emph{99 bottiglie di birra}''
+   \item (vedete anche \url{https://esolangs.org/wiki/99_bottles_of_beer})
+  \end{itemize}
+  \begin{quote}
+   «99 bottles of beer on the wall, 99 bottles of beer.\newline
+   Take one down, pass it around, 98 bottles of beer on the wall \newline
+   99 bottles of beer on the wall, 99 bottles of beer.\newline
+   Take one down, pass it around, 98 bottles of beer on the wall  \newline
+   ...\newline
+   1 bottle of beer on the wall, 1 bottle of beer.\newline
+   Take one down, pass it around, no more bottles of beer on the wall\newline
+   There no more bottles of beer on the wall, no more bottles of beer.»
+  \end{quote}
+
+\end{frame}
+
+\begin{frame}{Esercizi (II)}
+  \begin{itemize}
+    \item Utilizzando il ciclo \texttt{while} scrivete un programma che dato un 
+    intero stampi a schermo la ``tabellina''.
+    Ad esempio, se il numero è 7 dovrete stampare a schermo:
+    \begin{itemize}
+      \item 7*0 = 0
+      \item 7*1 = 7
+      \item 7*2 = 14
+      \item $\dots$
+      \item 7*10 = 70
+    \end{itemize}
+    \item riscrivete il programma precendente usando il ciclo \texttt{for}.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Esercizi (III)}
+  \begin{itemize}
+   \item Scrivete un programma che calcoli il fattoriale di un numero intero a vostra scelta.
+  \end{itemize}
+
+  La definizione del fattoriale è la seguente:
+  \begin{equation}
+    n! = n \times (n - 1) \times \dots \times 1
+  \end{equation}
+  quindi il calcolo del fattoriale può essere definito da: 
+  \begin{center}
+    \begin{minipage}{8cm}
+      \begin{algorithmic}[1]
+	\State $fatt \gets ?$ \Comment Quale valore va messo qui?
+	\For{$i \gets 1$ to $N$}
+	  \State $fatt \gets fatt \times i$ 
+	\EndFor
+      \end{algorithmic}
+   \end{minipage}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Esercizi (IV)}
+  \begin{itemize}
+    \item Scrivere un programma che stampi i valori della serie di Fibonacci minori di 10000.
+    La serie di Fibonacci \`e definita da:
+    \begin{equation*}
+      \left\{\begin{aligned}
+	  & x_0 = 1\\
+	  & x_1 = 1\\
+	  & x_{n+1} = x_{n} + x_{n-1}
+      \end{aligned}\right.
+    \end{equation*}
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Esercizi (V)}
+  \begin{itemize}
+    \item Scrivere un programma che usi il metodo per il calcolo della radice quadrata di Newton.
+    
+    \begin{equation*}
+      \left\{\begin{aligned}
+	  & x_0 = 0.5\\
+	  & x_{n +1} = 0.5 \cdot {x_n} (3  - zx^2_n)
+      \end{aligned}\right.
+    \end{equation*}
+    \begin{equation*}
+     \lim_{n \to \infty} x_{n} = \sqrt{z}
+    \end{equation*}
+  \end{itemize}
+  
+  Il programma deve calcolare la serie definita sopra fino a che l'errore $\varepsilon_{n} = |x^{2}_{n} - z|$,
+  non è più piccolo di $10^{-3}$. Per il valore assoluto utilizzate la funzione \texttt{Math.\Blue{abs()}}.
+
+\end{frame}
+
+\begin{frame}{Esercizi (VI)}
+  \begin{itemize}
+    \item Metodo della bisezione
+  \end{itemize}
+  \begin{tiny}
+    \url{https://ece.uwaterloo.ca/~dwharder/NumericalAnalysis/10RootFinding/bisection/bisection.gif}
+  \end{tiny}
+
+  \begin{scriptsize}
+    \begin{center}
+      \begin{minipage}{8cm}
+	\begin{algorithmic}[1]
+	  \Require Function $f$, endpoint values $a, b$, tolerance $\varepsilon$, maximum iterations $N_{MAX}$
+		   $a < b$, either $f(a) < 0$ and $f(b) > 0$ or $f(a) > 0$ and $f(b) < 0$
+	  \Ensure value which differs from $a$ root of $f(x)=0$ by less than $\varepsilon$
+    
+	  \State $N \gets 1$
+	  \While{$N \leq N_{MAX}$}
+	    \State $c \gets (a + b)/2$
+	    \If{$f(c) = 0 \lor (b – a)/2 < \varepsilon$}
+	      \State \texttt{\textbf{print}}(c)
+	      \State \Return;
+	    \EndIf
+	    \State $N \gets N + 1$
+	    \If{$sign(f(c)) = sign(f(a))$}
+	      \State $a \gets c$
+	    \Else 
+	      \State $b \gets c$
+	    \EndIf
+	  \EndWhile
+	  \State \texttt{\textbf{print}}(Non ho trovato risultati)
+	\end{algorithmic}
+      \end{minipage}
+    \end{center}
+  \end{scriptsize}
+
+\end{frame}
+
+\begin{frame}{Esercizi (VII)}
+  Test di primalità
+  \begin{itemize}
+    \item Scrivere un programma che, dato un intero positivo, verifichi se quel numero è primo oppure no.
+  \end{itemize}
+
+   Un numero $n \in \mathbb{N}, n > 1$ \`e \textbf{primo} se e solo se \`e divisibile solo per $1$ e per
+   se stesso.
+\end{frame}

@@ -1,0 +1,82 @@
+\begin{frame}[fragile]\frametitle{Istruzione If-Else}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    int n = 4;
+    if (n \% 2 == 0) {
+      System.out.println(\String!"Il numero è pari"|);
+    } else {
+      System.out.println(\String!"Il numero è dispari"|);
+    }
+  \end{JavaCodePlain}
+
+\end{frame}
+
+
+% \begin{frame}[fragile]\frametitle{Istruzione If-Else}
+% 
+%   \begin{verbatim}
+%     int n = 4;
+%   \end{verbatim}
+%   {\color{green!50!black}
+%     \begin{verbatim}
+%      if (n % 2 == 0)
+%     \end{verbatim}
+%   }{\color{red}
+%     \begin{verbatim}
+%       {
+%         System.out.println("Il numero è pari");}
+%       }
+%     \end{verbatim}
+%   }
+%   \begin{verbatim}
+%     else
+%   \end{verbatim}
+%   {\color{red}
+%     \begin{verbatim}
+%       {
+%         System.out.println("Il numero è dispari");}
+%       }
+%     \end{verbatim}
+%   }
+% \end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Istruzione If-Else}
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Blue!int n = 4;|
+    \Green!if (n \% 2 == 0)| {
+      \Red!System.out.println("Il numero è pari");|
+    } else {
+      \Red!System.out.println("Il numero è dispari");|
+    }
+  \end{JavaCodePlain}
+\end{frame}
+
+\begin{frame}{Istruzione If-Then-Else}
+
+  % Define block styles
+  \tikzstyle{decision} = [diamond, draw, fill=green!20,text width=4.5em, text
+                          badly centered, node distance=3cm, inner sep=0pt, font=\scriptsize]
+  \tikzstyle{block} = [rectangle, draw, rounded corners]
+  \tikzstyle{line} = [draw, -latex']
+
+  Diagramma di flusso dell'istruzione If-Then-Else:
+  \begin{center}
+    \begin{tikzpicture}[node distance = 1cm, auto]
+	% Place nodes
+	\node [block, text width=1.75cm, fill=blue!20!white] (init) {\texttt{int n = 1;}\\\texttt{int s = 0;}};
+	\node [decision, below of=init] (decide) {\textbf{\texttt{if}} $n \; \mathit{mod} \; 2 = 0$};
+	\node [block, left  of=decide, node distance=4cm, fill=red!50, text width=3cm, text centered] (comandi_else){Il numero è dispari};
+	\node [block, right of=decide, node distance=4cm, fill=red!50, text width=3cm, text centered] (comandi_if)  {Il numero è pari};
+	\node [block, below of=decide, node distance=2cm] (stop) {resto del programma};
+	% Draw edges
+	\path [line] (init) -- (decide);
+	\path [line] (decide) -- node {no}(comandi_else);
+	\path [line] (decide) -- node {sì}(comandi_if);
+	\path [line] (comandi_if) --++ (0,-2) -- (stop);
+	\path [line] (comandi_else) --++ (0,-2) -- (stop);
+    \end{tikzpicture}   
+  \end{center}
+
+\end{frame}
+
