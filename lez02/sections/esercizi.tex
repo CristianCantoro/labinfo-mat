@@ -89,9 +89,17 @@
     \end{equation*}
   \end{itemize}
   
-  Il programma deve calcolare la serie definita sopra fino a che l'errore $\varepsilon_{n} = |x^{2}_{n} - z|$,
+  Il programma deve calcolare la serie definita sopra fino a che l'errore
+  $\varepsilon_{n} = \left|\dfrac{1}{x^{2}_{n}} - z\right|$,
   non è più piccolo di $10^{-3}$. Per il valore assoluto utilizzate la funzione \texttt{Math.\Blue{abs()}}.
 
+  \begin{scriptsize}
+    \textbf{Nota di implementazione:} quando scegliete il valore iniziale calcolate (a mente) l'intero più grande $x$
+    tale per cui $x^2 < z$ e inizializate la successione, ovvero usate come valore di $x_0$ il reciproco di quel numero.
+    (${\lfloor x \rfloor}$ indica il \texttt{floor} di $x$ ovvero il valore di $x$ arrotondato all'intero più piccolo).  
+  \end{scriptsize}
+
+  
 \end{frame}
 
 \begin{frame}{Esercizi (VI) (a)}
