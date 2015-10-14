@@ -1,0 +1,203 @@
+% \begin{frame}{Array (I)}
+% 
+%   Supponiamo di volere avere delle variabili che contegano tutte
+%   le lettere (minuscole) dell'alfabeto (\texttt{\Word{char}}).
+% 
+% 
+%   Dovere gestire 26 variabili potrebbe essere complicato!
+% 
+% 
+%   Possiamo usare un \textbf{array}. 
+%   
+% \end{frame}
+
+\begin{frame}{Array (I)}
+  \begin{table}[]
+  \centering
+    \begin{tabular}{cccccccccc}
+      \multicolumn{10}{c}{}                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\
+      \rowcolor[HTML]{EFEFEF} 
+      {\color[HTML]{FE0000} \textbf{0}}               & \textbf{1}                                     & \textbf{2}                                     & \textbf{3}                                     & \textbf{4}                                     & \textbf{5}                                     & \textbf{6}                                     & \textbf{7}                                     & \textbf{8}                                     & \textbf{9}                                     \\ \hline
+      \rowcolor[HTML]{9AFF99} 
+      \multicolumn{1}{|c|}{\cellcolor[HTML]{9AFF99}\String{a"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"b"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"c"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"d"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"e"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"f"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"g"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"h"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"i"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"j"}} \\ \hline
+      \multicolumn{10}{c}{}                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    \end{tabular}
+  \end{table}  
+  
+  Un \textbf{array} (o \textbf{vettore}) è una \emph{struttura dati} composto da un \textbf{numero finito} di 
+  elementi tutti dello \textbf{stesso tipo}.
+
+\end{frame}
+
+\begin{frame}{Array (I)}
+  
+  Simili al concetto matematico di vettore:
+  
+  \begin{equation*}
+    v = \left( \begin{array}{c}
+                1 \\
+                0 \\
+                4 \\
+                7 \\
+               \end{array}\right)
+  \end{equation*}
+
+\end{frame}
+
+\begin{frame}{Array (II)}
+  \begin{enumerate}
+   \item Dichiarazione di un array:
+  \end{enumerate}
+  \begin{center}
+    \begin{columns}[T]
+      \begin{column}[T]{3cm}
+	\begin{itemize}
+	 \item 	\texttt{\Violet{tipo} \Green{nome}\textbf{[]}}
+	\end{itemize}
+      \end{column}
+      \begin{column}[T]{3cm}
+	\begin{itemize}
+	 \item \texttt{\Violet{tipo}\textbf{[]} \Green{nome}}
+	\end{itemize}
+      \end{column}
+    \end{columns}   
+  \end{center}
+
+  \begin{enumerate}
+    \setcounter{enumi}{1}
+    \item Allocazione:
+  \end{enumerate}
+  \begin{itemize}
+   \item \texttt{\Green{nome} = \Red{\textbf{new}} \Violet{tipo}[\Blue{dimensione}]}
+  \end{itemize}
+
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item Diachiarazione e inizializzazione con literals:
+  \end{enumerate}
+  \begin{itemize}
+   \item \texttt{\Violet{tipo}\textbf{[]} \Green{nome} =\textbf{\{}val1, val2, ...\textbf{\}}} 
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Array (III)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jpublic \Jclass Array {
+
+    \Jpublic \Jstatic \Jvoid main(String[] args) {
+    
+      \Jint[] vettore;      
+      vettore = \Word!new| int[10];
+
+    \dots
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}{Array (IV)}
+  \begin{table}[]
+    \centering
+    \begin{tabular}{cccccccccc}
+      \multicolumn{10}{c}{\textbf{indici}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\
+      \rowcolor[HTML]{EFEFEF} 
+      {\color[HTML]{FE0000} \textbf{0}}               & \textbf{1}                                     & \textbf{2}                                     & \textbf{3}                                     & \textbf{4}                                     & \textbf{5}                                     & \textbf{6}                                     & \textbf{7}                                     & \textbf{8}                                     & \textbf{9}                                     \\ \hline
+      \rowcolor[HTML]{9AFF99} 
+      \multicolumn{1}{|c|}{\cellcolor[HTML]{9AFF99}\String{"a"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"b"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"c"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"d"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"e"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"f"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"g"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"h"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"i"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"j"}} \\ \hline
+      \multicolumn{10}{c}{{\color[HTML]{009901} valori}}                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    \end{tabular}
+  \end{table}
+  
+  Per accedere all'elemento con indice \texttt{\Blue{i}} dell'array si usa la sintassi:
+  \begin{center}
+    \texttt{\Green{nome}\textbf{[}\Blue{i}\textbf{]}}
+  \end{center}
+  
+  Notate che:
+  \begin{itemize}
+   \item gli indici partono da \alert{\textbf{zero}} e arrivono fino alla \structure{\textbf{lunghezza dell'array meno uno}}
+   \item il primo elemento è accessibile con \texttt{\Green{nome}\textbf{[}\Blue{0}\textbf{]}}
+   \item l'ultimo elemento è accessibile con \texttt{\Green{nome}\textbf{[}\Blue{len - 1}\textbf{]}} (dove \texttt{len}
+	 è la lunghezza dell'array.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Array (V)}
+  \begin{table}[]
+    \centering
+    \begin{tabular}{cccccccccc}
+      \multicolumn{10}{c}{\textbf{indici}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\
+      \rowcolor[HTML]{EFEFEF} 
+      {\color[HTML]{FE0000} \textbf{0}}               & \textbf{1}                                     & \textbf{2}                                     & \textbf{3}                                     & \textbf{4}                                     & \textbf{5}                                     & \textbf{6}                                     & \textbf{7}                                     & \textbf{8}                                     & \textbf{9}                                     \\ \hline
+      \rowcolor[HTML]{9AFF99} 
+      \multicolumn{1}{|c|}{\cellcolor[HTML]{9AFF99}\String{"a"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"b"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"c"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"d"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"e"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"f"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"g"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"h"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"i"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"j"}} \\ \hline
+      \multicolumn{10}{c}{{\color[HTML]{009901} valori}}                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    \end{tabular}
+  \end{table}
+  
+  Per accedere all'elemento con indice \texttt{\Blue{i}} dell'array si usa la sintassi:
+  \begin{center}
+    \texttt{valore = \Green{nome}\textbf{[}\Blue{i}\textbf{]}}
+  \end{center}
+  
+  Esempi:
+  \begin{itemize}
+   \item \texttt{\Green{nome}\textbf{[}\Blue{0}\textbf{]}} $\rightarrow$ \String{"a"}
+   \item \texttt{\Green{nome}\textbf{[}\Blue{4}\textbf{]}} $\rightarrow$ \String{"e"}
+   \item \texttt{\Green{nome}\textbf{[}\Blue{10}\textbf{]}} $\rightarrow$ \alert{\textbf{Errore: out of range}}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Array (VI)}
+  \begin{table}[]
+    \centering
+    \begin{tabular}{cccccccccc}
+      \multicolumn{10}{c}{\textbf{indici}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                     \\
+      \rowcolor[HTML]{EFEFEF} 
+      {\color[HTML]{FE0000} \textbf{0}}               & \textbf{1}                                     & \textbf{2}                                     & \textbf{3}                                     & \textbf{4}                                     & \textbf{5}                                     & \textbf{6}                                     & \textbf{7}                                     & \textbf{8}                                     & \textbf{9}                                     \\ \hline
+      \rowcolor[HTML]{9AFF99} 
+      \multicolumn{1}{|c|}{\only<1-2>{\cellcolor[HTML]{9AFF99}\String{"a"}}\only<3->{\cellcolor[HTML]{34FF34}\String{"z"}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"b"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"c"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"d"}} & \multicolumn{1}{|c|}{\only<-4>{\cellcolor[HTML]{9AFF99}\String{"e"}}\only<5->{\cellcolor[HTML]{34FF34}\String{"x"}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"f"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"g"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"h"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"i"}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9AFF99}\String{"j"}} \\ \hline
+      \multicolumn{10}{c}{{\color[HTML]{009901} valori}}                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    \end{tabular}
+  \end{table}
+  
+  Per impostare il valore dell'elemento con indice \texttt{\Blue{i}} dell'array si usa la sintassi:
+  \begin{center}
+    \texttt{\Green{nome}\textbf{[}\Blue{i}\textbf{]} = valore}
+  \end{center}
+  
+  Esempi:
+  \pause{
+  \begin{itemize}
+   \item<2-> \texttt{\Green{nome}\textbf{[}\Blue{0}\textbf{]} = \String{"z"}}
+   \item<4-> \texttt{\Green{nome}\textbf{[}\Blue{4}\textbf{]} = \String{"x"}}
+   \item<6-> \texttt{\Green{nome}\textbf{[}\Blue{10}\textbf{]}} $\rightarrow$ \alert{\textbf{Errore: out of range}}
+  \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}[fragile]{Array e funzioni}
+
+  Gli array possono essere usati come argomenti delle funzioni
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jpublic \Jclass ArrayFun {
+
+    \Jpublic \Jstatic \Jvoid somma(int[] v) {
+    
+      int s = 0,
+      \Jfor[int i = 0][i < v.length]!i++| {
+	
+      }
+    \dots
+  \end{JavaCodePlain}
+  
+\begin{alertblock}{Attenzione}
+  A differenza delle altre variabili, se  un  array viene modificato in una funzione resta 
+  modificato per tutto il programma
+\end{alertblock}
+
+\end{frame}

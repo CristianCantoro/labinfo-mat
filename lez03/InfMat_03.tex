@@ -1,0 +1,78 @@
+\documentclass[10pt]{beamer}
+
+% %%% Style %%%
+\mode<presentation>
+{
+  \usetheme{Berlin}
+  \setbeamertemplate{blocks}[rounded]
+  \setbeamercolor{block title}{bg=gray}
+  \setbeamercovered{transparent}
+}
+
+% %%% Packages %%%
+\input{includes/packages}
+
+% Custom packages (needs absolute path from root document
+\input{includes/titlepage.sty}
+\input{includes/appendixnumberbeamer.sty}
+
+% %%% Macros and custom commands %%%
+\input{includes/macros}
+
+\title[Laboratorio di Informatica - Lezione 3]{Laboratorio di Informatica \\ Lezione 3}
+\author[Cristian Consonni]{Cristian Consonni}
+\date[12/10/2015]{12 ottobre 2015}
+\institute[UniTN]{Università degli Studi di Trento}
+
+% %%% Put slides with section name at the begining of each section %%%
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+%%%%%%%%%% TITLE %%%%%%%%%%
+% Formerly part of title.tex
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+%%%%%%%%%% END TITLE %%%%%%%%%%
+
+\input{sections/intro.tex}
+
+\section{Procedure e funzioni}
+\input{sections/funzioni.tex}
+
+\section{Iterazione e ricorsione}
+\input{sections/iterazione.tex}
+
+\section{Variabili globali e locali}
+\input{sections/globali.tex}
+
+\section{Esericizi (parte I)}
+\input{sections/eserciziI.tex}
+
+\section{Array}
+\input{sections/array.tex}
+
+\section{Matrici}
+\input{sections/matrici.tex}
+
+\section{Esericizi}
+\input{sections/esercizi.tex}
+\input{sections/eratostene.tex}
+
+% \appendix
+% \section*{Backup}
+% \input{99backup/backup.tex}
+
+\end{document}

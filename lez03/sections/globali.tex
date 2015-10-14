@@ -1,0 +1,91 @@
+
+\begin{frame}[fragile]\frametitle{Variabili globali e locali}
+
+  All'interno di una funzione possono essere definite nuove \emph{variabili}.
+  Queste variabili sono \textbf{locali} ovvero esistono e sono utilizzatibili 
+  solo all'interno della funzione stessa.
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \dots
+  \Word!public static int| somma(\Word!int| x, \Word!int| y) {
+      \Jint ris;
+      ris = x + y;
+      \Word!return| ris;
+  }
+
+  \Word!public static void| main(String[] \LightBrown!args|) {    
+    \Jint a = 7;
+    \Jint b = 11;
+    \Jint risultato;
+    
+    \Jcomment!Qui *non posso* usare ris\bang|
+    \dots 
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Variabili globali e locali}
+
+  Le parentesi graffe \texttt{\{\}} definiscono uno \textbf{scope}
+  (lett. \emph{ambito}) ovvero un blocco di codice.
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+
+  \Word!public static void| main(String[] \LightBrown!args|) {    
+    \Jint fatt  = 1;
+    \Jint N = 10;
+
+    \Jfor (\Jint n = 2; n < N; n++) {
+      \Jcomment!La variabile n esiste solo all'interno di questo|
+      \Jcomment!blocco di codice|
+      \dots
+    }
+  
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Variabili globali e locali}
+
+  Come avete già visto potete usare variabili che avete definito
+  in blocco più esterno dentro blocchi più interni.
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+
+  \Word!public static void| main(String[] \LightBrown!args|) {    
+    \Jint fatt  = 1;
+    \Jint N = 10;
+
+    \Jfor (\Jint n = 2; n < N; n++) {
+      \Jcomment!fatt è definita nel blocco più esterno, quindi|
+      \Jcomment!la posso usare anche qui|
+      fatt = fatt * n;
+    }
+  
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Variabili globali e locali}
+
+  Posso definere delle variabili che possano essere usate in ogni
+  scope, queste si dicono variabili \textbf{globali}.
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Word!public class| GlobaliLocali {
+    
+    \Jint numero = 0;
+    
+  \dots
+  \end{JavaCodePlain}
+
+  queste variabili possono essere modificate da ogni funzione e quindi
+  \alert{vanno usate con attenzione}. È meglio limitare il più possibile
+  lo scope di una variabile.
+    
+  Cercate di dare nomi significativi alle variabili globali altrimenti
+  sembra che ``piovano dal cielo''. Solitamente le variabili globali
+  (specie se rappresentano una costante) si scrivono con nomi
+  tutti in \texttt{MAIUSCOLO}.
+  
+\end{frame}

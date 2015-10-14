@@ -1,0 +1,384 @@
+
+\begin{frame}{Metodo della bisezione}
+
+  Negli esercizi della scorsa volta abbiamo calcolato gli zeri di una \textbf{funzione}:
+  \begin{equation}
+    f(x) = x^3 - x - 2
+  \end{equation}
+
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Funzioni (I)}
+
+  Possiamo definire delle funzioni per rendere il codice:
+  \begin{itemize}
+    \item più \textbf{leggibile}
+    \item più \textbf{riutilizzabile}
+    \item più \textbf{compatto} e semplice da modificare
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (II)}
+
+  Dichiarazione e implementazione di una funzione:
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jpublic \Jstatic \Jdouble f(\Jdouble x) {
+      \Jreturn(x * x * x - x - 2);
+  }
+  \end{JavaCodePlain}     
+  analizziamo la sintassi parola per parola.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (III)}
+
+  Dichiarazione e implementazione di una funzione:
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Red!public| \Red!static| \Grey!double f(double x) {|
+      \Grey!return(x * x * x - x - 2);|
+  \Grey!}|
+  \end{JavaCodePlain}
+  
+  Le parole chiave \Red{public} e \Red{static} modificano la
+  visibilità della funzione. Per ora ignoratele e scrivete
+  sempre così.
+
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Funzioni (IV)}
+
+  Dichiarazione e implementazione di una funzione:
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Grey!public static| \Red!double| \Grey!f(double x) {|
+      \Grey!return(x * x * x - x - 2);|
+  \Grey!}|
+  \end{JavaCodePlain}
+  
+  Questo è il \textbf{tipo del valore di ritorno} (\emph{return type})
+  della funzione, vuol dire, in questo caso, che la funzione restituisce
+  un double.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (V)}
+
+  Dichiarazione e implementazione di una funzione:
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Grey!public static| \Grey!double| \Red!f|\Grey!(double x) {|
+      \Grey!return(x * x * x - x - 2);|
+  \Grey!}|
+  \end{JavaCodePlain}
+  
+  Dopo il tipo di ritorno si specifica il \textbf{nome} della funzione,
+  come per le variabili si tratta dell'identificativo da utilizzare per
+  utilizzare una funziona.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (VI)}
+
+  Dichiarazione e implementazione di una funzione:
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Grey!public static| \Grey!double| \Grey!f|\Red!(|\Grey!double x|\Red!)| \Grey!{|
+      \Grey!return(x * x * x - x - 2);|
+  \Grey!}|
+  \end{JavaCodePlain}
+
+  Le funzioni sono caratterizzate dalle parentesi tonde \texttt{f()} che servono
+  per potere \emph{chiamare} una funzioone.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (VII)}
+
+  Dichiarazione e implementazione di una funzione:
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Grey!public static| \Grey!double| \Grey!f(|\Red!double x|) \Grey!{|
+      \Grey!return(x * x * x - x - 2);|
+  \Grey!}|
+  \end{JavaCodePlain}
+
+  All'interno delle parentesi tonde si indicano gli argometi della
+  funzione detti \textbf{parametri formali}.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (VIII)}
+
+  Dichiarazione e implementazione di una funzione:
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Grey!public static| \Grey!double| \Grey!f(|\Red!double| \Grey!x) {|
+      \Grey!return(x * x * x - x - 2);|
+  \Grey!}|
+  \end{JavaCodePlain}
+
+  Ogni \emph{parametro formale} è caratterizzato da un proprio  \textbf{tipo}...
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (IX)}
+
+  Dichiarazione e implementazione di una funzione:
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Grey!public static| \Grey!double| \Grey!f(double| \Red!x|\Grey!) {|
+      \Grey!return(x * x * x - x - 2);|
+  \Grey!}|
+  \end{JavaCodePlain}
+
+  e da un proprio \textbf{nome}.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (X)}
+
+  Dichiarazione e implementazione di una funzione:
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Grey!public static| \Grey!double| \Grey!f(|\Red!double x1, int x2|\Grey!) {|
+      \Grey!return(x1 * x1 * x1 - x2 - 2);|
+  \Grey!}|
+  \end{JavaCodePlain}
+
+  Una funzione può avere più parametri formali ciascuno caratterizzato dal
+  proprio tipo e nome.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (XI)}
+
+  Dichiarazione e implementazione di una funzione:
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Grey!public static double f(double x) |\Red!{|
+      \Red!return(x * x * x - x - 2);|
+  \Red!}|
+  \end{JavaCodePlain}
+
+  Le parentesi graffe \texttt{\{\}} delimitano il \textbf{corpo}
+  (o \emph{scope}) della funzione.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni (XII)}
+
+  Dichiarazione e implementazione di una funzione:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Grey!public static double f(double x) {|
+      \Red!return|\Grey!(x * x * x - x - 2);|
+  \Grey!}|
+  \end{JavaCodePlain}
+
+  La parola riservata \Red{return} indica quale valore sarà restituito dalla funzione.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni: riassumendo}
+
+  Dichiarazione e implementazione di una funzione:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Red!public static| \Green!double| \Violet!f|(\Blue!double x|) {
+      \Brown!return|(x * x * x - x - 2);
+  }
+  \end{JavaCodePlain}
+
+  \begin{itemize}
+   \item \Red{\texttt{public static} $\rightarrow$ visibilità}
+   \item \Green{\texttt{double} $\rightarrow$ tipo del valore di ritorno}
+   \item \Violet{\texttt{f} $\rightarrow$ nome della funzione}
+   \item \Blue{\texttt{double x} $\rightarrow$ parametri formali}
+   \item \Brown{\texttt{return} $\rightarrow$ valore di ritorno}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Procedure}
+  Le procedure sono funzioni che non restituiscono alcun valore.
+  Per indicare questo fatto si usa come valore di ritorno \Word{\textbf{void}}:
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Red!public static| \Green!\textbf!void|| \Violet!f|(\Blue!double x|) {
+    \Jprintln!"Questa è una procedura"|;
+  }
+  \end{JavaCodePlain}
+  {\scriptsize (Nelle slide userò \LightBlue{printf} e \LightBlue{println} invece di
+   \LightBlue{System.out.printf} o \LightBlue{System.out.println}).}
+ 
+  \begin{itemize}
+   \item \Red{\texttt{public static} $\rightarrow$ visibilità}
+   \item \Green{\textbf{\texttt{void}} $\rightarrow$ nessun valore ritornarto, è una \textbf{procedura}}
+   \item \Violet{\texttt{f} $\rightarrow$ nome della procedura}
+   \item \Blue{\texttt{double x} $\rightarrow$ parametri formali}
+   \item \Brown{\texttt{return} $\rightarrow$ valore di ritorno}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni e procedure: esempio (I)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Word!public class| FunzioniProcedure {
+
+    \Jcomment!Questa è una funzione di due parametri x e y|
+    \Jcomment!che restituisce un intero|
+    \Word!public static int| somma(\Word!int| x, \Word!int| y) {
+        \Word!return| x + y;
+    }
+
+    \dots
+  \end{JavaCodePlain}
+
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni e procedure: esempio (II)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \dots
+
+    \Jcomment!Questa è una procedura di due parametri x e y|
+    \Word!public static void| stampaSomma(\Word!int| x, \Word!int| y) {
+
+      \Jprintf["== Somma di due numeri ==\%n"];
+      \Jprintf["Il primo parametro (x) vale \%d.\%n"][x];
+      \Jprintf["Il secondo parametro (y) vale \%d.\%n"][y];
+      \Jprintf["La somma di \%d e \%d è \%d.\%n"][x, y, x + y];
+
+      \Jcomment!La riga seguente può essere omessa,|
+      \Jcomment!io preferisco indicarla per chiarezza|
+      \Word!return|;
+    }
+    
+    \dots
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni e procedure: esempio (III)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \dots
+
+    \Jcomment!Questo è il main, come al solito|
+    \Word!public static void| main(String[] \LightBrown!args|) {
+    
+      \Jint a = 7;
+      \Jint b = 11;
+      \Jint risultato;
+      
+      \Jcomment!Chiamata della funzione|
+      risultato = somma(a, b);
+      \Jprintf["risultato: \%d.\%n"][risultato];
+      
+      \Jcomment!Chiamata della procedura|
+      stampaSomma(a, b);
+    }
+  }
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Parametri attuali}
+
+  Nella slide precedente abbiamo visto
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Word!public static int| somma(\Word!int| x, \Word!int| y) {
+  \dots
+  \Word!public static void| stampaSomma(\Word!int| x, \Word!int| y) {
+  \end{JavaCodePlain}
+  \textbf{definizioni} della funzione \texttt{somma} e della procedura
+  \texttt{stampaSomma}. Entrambe le definizioni hanno come \textbf{parametri formali} 
+  le variabli \texttt{x} e \texttt{y}.\newline
+  
+  Le chiamate:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  risultato = somma(x, y);
+  \dots
+  stampaSomma(x, y);
+  \end{JavaCodePlain}
+  hanno come \textbf{parametri attuali} le variabli \texttt{a} e \texttt{b}.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Parametri passati per valore (I)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jpublic \Jclass StampaParola {
+
+    \Jcomment!di solito in Java si usa il CamelCase|
+    \Jpublic \Jstatic \Jvoid stampaParolaInVerticale(String parola) {
+
+      \Jcomment!String.toUpperCase() rende una stringa tutta|
+      \Jcomment!maiuscola|
+      parola = parola.toUpperCase();
+      
+      \Jcomment!String.length restituisce la lunghezza della parola|
+      for(int i = 0; i < parola.length(); i++) {
+
+	      \Jcomment!parola.charAt(i) restituisce l'i-esimo carattere|
+	      \Jcomment!della parola si parte a contare da zero.|
+	      \JprintLN(parola.charAt(i));
+      }
+    }
+  \dots
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Parametri passati per valore (II)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+   \dots
+
+    \Jpublic \Jstatic \Jvoid main(String[] args) {
+    
+      String parola = \String!"Ciao"|;
+      
+      \Jprintf["La parola da stampare è: \%s.\%n"][parola];
+      stampaParolaInVerticale(parola);
+      \Jprintf["La parola stampata è: \%s.\%n"][parola];
+
+    }
+  }
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Funzioni: diagramma}
+
+%   \begin{tikzpicture}[node distance=.3\textwidth]
+%     \node (x)  {$x$};
+%     \node (y) [right of=x] {$y=f(x)$};
+%     \draw[->,thick] (x) -- node[above] {$f$} (y);
+%   \end{tikzpicture}
+
+  Possiamo immaginare una funzione come una ``scatola nera'' che
+  rende in ingresso i parametri e restituisce un valore:
+
+  \begin{center}
+    \begin{tikzpicture}[baseline=-0.5ex, on grid, node distance=2cm]
+      \node (init) {$x_1, x_2, x_3, \dots$};
+      \node[draw,right of=init, minimum size=1cm] (func) {$f$}; 
+      \node[right= 3cm of func] (end) {$f(x_1, x_2, x_3, \dots)$};
+      \node[below= 1cm of func] (def1) {\texttt{return\_type f}};
+      \node[below= 0.5cm of def1] (def2) {\texttt{type1 $x_1$, type2 $x_2$, type3 $x_3$, $\dots$}};
+      \draw[-] (init)--(func);
+      \draw[-latex] (func)--(end);
+    \end{tikzpicture}
+  \end{center}
+  
+  \pause{
+  \begin{alertblock}{Attenzione}
+    In un linguaggio imperativo è possibile che una funzioni modifichi il valore di alcune variabili in ingresso!
+  \end{alertblock}
+  }
+
+\end{frame}

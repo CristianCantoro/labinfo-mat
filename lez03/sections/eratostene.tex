@@ -1,0 +1,546 @@
+\subsection{Crivello di Eratostene}
+
+\begin{frame}{Esercizio: trovare tutti i numeri primi fino a N (I)}
+
+  \begin{itemize}
+   \item   Nell'esercizio sulla primalità abbiamo scritto una funzione che
+   ci permette di testare se un dato numero $n$ è primo.
+   \item Ammettiamo di voler scrivere un programma che ci dica tutti i numeri primi
+   fino a $100$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (I)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+      1  & 2  & 3  & 4  & 5  & 6  & 7  & 8  & 9  & 10  \\ \hline
+      11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20  \\ \hline
+      21 & 22 & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 30  \\ \hline
+      31 & 32 & 33 & 34 & 35 & 36 & 37 & 38 & 39 & 40  \\ \hline
+      41 & 42 & 43 & 44 & 45 & 46 & 47 & 48 & 49 & 50  \\ \hline
+      51 & 52 & 53 & 54 & 55 & 56 & 57 & 58 & 59 & 60  \\ \hline
+      61 & 62 & 63 & 64 & 65 & 66 & 67 & 68 & 69 & 70  \\ \hline
+      71 & 72 & 73 & 74 & 75 & 76 & 77 & 78 & 79 & 80  \\ \hline
+      81 & 82 & 83 & 84 & 85 & 86 & 87 & 88 & 89 & 90  \\ \hline
+      91 & 92 & 93 & 94 & 95 & 96 & 97 & 98 & 99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (II)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+      \hline
+      \cellcolor[HTML]{C0C0C0}1  & 2  & 3  & 4  & 5  & 6  & 7  & 8  & 9  & 10  \\ \hline
+      11                         & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20  \\ \hline
+      21                         & 22 & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 30  \\ \hline
+      31                         & 32 & 33 & 34 & 35 & 36 & 37 & 38 & 39 & 40  \\ \hline
+      41                         & 42 & 43 & 44 & 45 & 46 & 47 & 48 & 49 & 50  \\ \hline
+      51                         & 52 & 53 & 54 & 55 & 56 & 57 & 58 & 59 & 60  \\ \hline
+      61                         & 62 & 63 & 64 & 65 & 66 & 67 & 68 & 69 & 70  \\ \hline
+      71                         & 72 & 73 & 74 & 75 & 76 & 77 & 78 & 79 & 80  \\ \hline
+      81                         & 82 & 83 & 84 & 85 & 86 & 87 & 88 & 89 & 90  \\ \hline
+      91                         & 92 & 93 & 94 & 95 & 96 & 97 & 98 & 99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (III)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1 & {\color[HTML]{FE0000} 2}          & 3  & 4  & 5  & 6  & 7  & 8  & 9  & 10  \\ \hline
+    11                        & 12                                & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20  \\ \hline
+    21                        & 22                                & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 30  \\ \hline
+    31                        & 32                                & 33 & 34 & 35 & 36 & 37 & 38 & 39 & 40  \\ \hline
+    41                        & 42                                & 43 & 44 & 45 & 46 & 47 & 48 & 49 & 50  \\ \hline
+    51                        & 52                                & 53 & 54 & 55 & 56 & 57 & 58 & 59 & 60  \\ \hline
+    61                        & 62                                & 63 & 64 & 65 & 66 & 67 & 68 & 69 & 70  \\ \hline
+    71                        & 72                                & 73 & 74 & 75 & 76 & 77 & 78 & 79 & 80  \\ \hline
+    81                        & 82                                & 83 & 84 & 85 & 86 & 87 & 88 & 89 & 90  \\ \hline
+    91                        & 92                                & 93 & 94 & 95 & 96 & 97 & 98 & 99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (IV)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{FCFF2F}{\color[HTML]{FE0000} 2} & 3  & 4  & 5  & 6  & 7  & 8  & 9  & 10  \\ \hline
+    11                         & 12                        & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20  \\ \hline
+    21                         & 22                        & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 30  \\ \hline
+    31                         & 32                        & 33 & 34 & 35 & 36 & 37 & 38 & 39 & 40  \\ \hline
+    41                         & 42                        & 43 & 44 & 45 & 46 & 47 & 48 & 49 & 50  \\ \hline
+    51                         & 52                        & 53 & 54 & 55 & 56 & 57 & 58 & 59 & 60  \\ \hline
+    61                         & 62                        & 63 & 64 & 65 & 66 & 67 & 68 & 69 & 70  \\ \hline
+    71                         & 72                        & 73 & 74 & 75 & 76 & 77 & 78 & 79 & 80  \\ \hline
+    81                         & 82                        & 83 & 84 & 85 & 86 & 87 & 88 & 89 & 90  \\ \hline
+    91                         & 92                        & 93 & 94 & 95 & 96 & 97 & 98 & 99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (V)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{FCFF2F}{\color[HTML]{FE0000} 2} & 3  & \cellcolor[HTML]{FFCCC9}4 & 5  & 6  & 7  & 8  & 9  & 10  \\ \hline
+    11 & 12                        & 13 & 14                        & 15 & 16 & 17 & 18 & 19 & 20  \\ \hline
+    21 & 22                        & 23 & 24                        & 25 & 26 & 27 & 28 & 29 & 30  \\ \hline
+    31 & 32                        & 33 & 34                        & 35 & 36 & 37 & 38 & 39 & 40  \\ \hline
+    41 & 42                        & 43 & 44                        & 45 & 46 & 47 & 48 & 49 & 50  \\ \hline
+    51 & 52                        & 53 & 54                        & 55 & 56 & 57 & 58 & 59 & 60  \\ \hline
+    61 & 62                        & 63 & 64                        & 65 & 66 & 67 & 68 & 69 & 70  \\ \hline
+    71 & 72                        & 73 & 74                        & 75 & 76 & 77 & 78 & 79 & 80  \\ \hline
+    81 & 82                        & 83 & 84                        & 85 & 86 & 87 & 88 & 89 & 90  \\ \hline
+    91 & 92                        & 93 & 94                        & 95 & 96 & 97 & 98 & 99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (VI)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{FCFF2F}{\color[HTML]{FE0000} 2} & 3  & \cellcolor[HTML]{FFCCC9}4 & 5  & \cellcolor[HTML]{FFCCC9}6 & 7  & 8  & 9  & 10  \\ \hline
+    11 & 12                        & 13 & 14                        & 15 & 16                        & 17 & 18 & 19 & 20  \\ \hline
+    21 & 22                        & 23 & 24                        & 25 & 26                        & 27 & 28 & 29 & 30  \\ \hline
+    31 & 32                        & 33 & 34                        & 35 & 36                        & 37 & 38 & 39 & 40  \\ \hline
+    41 & 42                        & 43 & 44                        & 45 & 46                        & 47 & 48 & 49 & 50  \\ \hline
+    51 & 52                        & 53 & 54                        & 55 & 56                        & 57 & 58 & 59 & 60  \\ \hline
+    61 & 62                        & 63 & 64                        & 65 & 66                        & 67 & 68 & 69 & 70  \\ \hline
+    71 & 72                        & 73 & 74                        & 75 & 76                        & 77 & 78 & 79 & 80  \\ \hline
+    81 & 82                        & 83 & 84                        & 85 & 86                        & 87 & 88 & 89 & 90  \\ \hline
+    91 & 92                        & 93 & 94                        & 95 & 96                        & 97 & 98 & 99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (VII)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+    \centering
+      \begin{tabular}{|c|
+      >{\columncolor[HTML]{FFCCC9}}c |c|
+      >{\columncolor[HTML]{FFCCC9}}c |c|
+      >{\columncolor[HTML]{FFCCC9}}c |c|
+      >{\columncolor[HTML]{FFCCC9}}c |c|
+      >{\columncolor[HTML]{FFCCC9}}c |}
+      \hline
+      \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{FCFF2F}{\color[HTML]{FE0000} 2} & 3  & 4  & 5  & 6  & 7  & 8  & 9  & 10  \\ \hline
+      11 & 12                        & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20  \\ \hline
+      21 & 22                        & 23 & 24 & 25 & 26 & 27 & 28 & 29 & 30  \\ \hline
+      31 & 32                        & 33 & 34 & 35 & 36 & 37 & 38 & 39 & 40  \\ \hline
+      41 & 42                        & 43 & 44 & 45 & 46 & 47 & 48 & 49 & 50  \\ \hline
+      51 & 52                        & 53 & 54 & 55 & 56 & 57 & 58 & 59 & 60  \\ \hline
+      61 & 62                        & 63 & 64 & 65 & 66 & 67 & 68 & 69 & 70  \\ \hline
+      71 & 72                        & 73 & 74 & 75 & 76 & 77 & 78 & 79 & 80  \\ \hline
+      81 & 82                        & 83 & 84 & 85 & 86 & 87 & 88 & 89 & 90  \\ \hline
+      91 & 92                        & 93 & 94 & 95 & 96 & 97 & 98 & 99 & 100 \\ \hline
+      \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (VI)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1 & \cellcolor[HTML]{F8FF00}2 & {\color[HTML]{FE0000} 3} & 4  & 5  & 6  & 7  & 8  & 9  & 10  \\ \hline
+    11                        & 12                        & 13                       & 14 & 15 & 16 & 17 & 18 & 19 & 20  \\ \hline
+    21                        & 22                        & 23                       & 24 & 25 & 26 & 27 & 28 & 29 & 30  \\ \hline
+    31                        & 32                        & 33                       & 34 & 35 & 36 & 37 & 38 & 39 & 40  \\ \hline
+    41                        & 42                        & 43                       & 44 & 45 & 46 & 47 & 48 & 49 & 50  \\ \hline
+    51                        & 52                        & 53                       & 54 & 55 & 56 & 57 & 58 & 59 & 60  \\ \hline
+    61                        & 62                        & 63                       & 64 & 65 & 66 & 67 & 68 & 69 & 70  \\ \hline
+    71                        & 72                        & 73                       & 74 & 75 & 76 & 77 & 78 & 79 & 80  \\ \hline
+    81                        & 82                        & 83                       & 84 & 85 & 86 & 87 & 88 & 89 & 90  \\ \hline
+    91                        & 92                        & 93                       & 94 & 95 & 96 & 97 & 98 & 99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (VII)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1 & \cellcolor[HTML]{F8FF00}2 & \cellcolor[HTML]{F8FF00}{\color[HTML]{FE0000} 3} & 4  & 5  & 6  & 7  & 8  & 9  & 10  \\ \hline
+    11                        & 12                        & 13                                               & 14 & 15 & 16 & 17 & 18 & 19 & 20  \\ \hline
+    21                        & 22                        & 23                                               & 24 & 25 & 26 & 27 & 28 & 29 & 30  \\ \hline
+    31                        & 32                        & 33                                               & 34 & 35 & 36 & 37 & 38 & 39 & 40  \\ \hline
+    41                        & 42                        & 43                                               & 44 & 45 & 46 & 47 & 48 & 49 & 50  \\ \hline
+    51                        & 52                        & 53                                               & 54 & 55 & 56 & 57 & 58 & 59 & 60  \\ \hline
+    61                        & 62                        & 63                                               & 64 & 65 & 66 & 67 & 68 & 69 & 70  \\ \hline
+    71                        & 72                        & 73                                               & 74 & 75 & 76 & 77 & 78 & 79 & 80  \\ \hline
+    81                        & 82                        & 83                                               & 84 & 85 & 86 & 87 & 88 & 89 & 90  \\ \hline
+    91                        & 92                        & 93                                               & 94 & 95 & 96 & 97 & 98 & 99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (VIII)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1 & \cellcolor[HTML]{F8FF00}2 & \cellcolor[HTML]{F8FF00}{\color[HTML]{FE0000} 3} & 4  & 5  & \cellcolor[HTML]{FD6864}6 & 7  & 8  & 9  & 10  \\ \hline
+    11                        & 12                        & 13                                               & 14 & 15 & 16                        & 17 & 18 & 19 & 20  \\ \hline
+    21                        & 22                        & 23                                               & 24 & 25 & 26                        & 27 & 28 & 29 & 30  \\ \hline
+    31                        & 32                        & 33                                               & 34 & 35 & 36                        & 37 & 38 & 39 & 40  \\ \hline
+    41                        & 42                        & 43                                               & 44 & 45 & 46                        & 47 & 48 & 49 & 50  \\ \hline
+    51                        & 52                        & 53                                               & 54 & 55 & 56                        & 57 & 58 & 59 & 60  \\ \hline
+    61                        & 62                        & 63                                               & 64 & 65 & 66                        & 67 & 68 & 69 & 70  \\ \hline
+    71                        & 72                        & 73                                               & 74 & 75 & 76                        & 77 & 78 & 79 & 80  \\ \hline
+    81                        & 82                        & 83                                               & 84 & 85 & 86                        & 87 & 88 & 89 & 90  \\ \hline
+    91                        & 92                        & 93                                               & 94 & 95 & 96                        & 97 & 98 & 99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (IX)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1 & \cellcolor[HTML]{F8FF00}2 & \cellcolor[HTML]{F8FF00}{\color[HTML]{FE0000} 3} & 4  & 5  & \cellcolor[HTML]{FD6864}6 & 7  & 8  & \cellcolor[HTML]{FFCCC9}9 & 10  \\ \hline
+    11                        & 12                        & 13                                               & 14 & 15 & 16                        & 17 & 18 & 19                        & 20  \\ \hline
+    21                        & 22                        & 23                                               & 24 & 25 & 26                        & 27 & 28 & 29                        & 30  \\ \hline
+    31                        & 32                        & 33                                               & 34 & 35 & 36                        & 37 & 38 & 39                        & 40  \\ \hline
+    41                        & 42                        & 43                                               & 44 & 45 & 46                        & 47 & 48 & 49                        & 50  \\ \hline
+    51                        & 52                        & 53                                               & 54 & 55 & 56                        & 57 & 58 & 59                        & 60  \\ \hline
+    61                        & 62                        & 63                                               & 64 & 65 & 66                        & 67 & 68 & 69                        & 70  \\ \hline
+    71                        & 72                        & 73                                               & 74 & 75 & 76                        & 77 & 78 & 79                        & 80  \\ \hline
+    81                        & 82                        & 83                                               & 84 & 85 & 86                        & 87 & 88 & 89                        & 90  \\ \hline
+    91                        & 92                        & 93                                               & 94 & 95 & 96                        & 97 & 98 & 99                        & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (X)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{F8FF00}2  & \cellcolor[HTML]{F8FF00}{\color[HTML]{FE0000} 3} & 4                          & 5                          & \cellcolor[HTML]{FD6864}6  & 7                          & 8                          & \cellcolor[HTML]{FFCCC9}9  & 10                         \\ \hline
+    11                         & \cellcolor[HTML]{FD6864}12 & 13                                               & 14                         & \cellcolor[HTML]{FFCCC9}15 & 16                         & 17                         & \cellcolor[HTML]{FD6864}18 & 19                         & 20                         \\ \hline
+    \cellcolor[HTML]{FFCCC9}21 & 22                         & 23                                               & \cellcolor[HTML]{FD6864}24 & 25                         & 26                         & \cellcolor[HTML]{FFCCC9}27 & 28                         & 29                         & \cellcolor[HTML]{FD6864}30 \\ \hline
+    31                         & 32                         & \cellcolor[HTML]{FFCCC9}33                       & 34                         & 35                         & \cellcolor[HTML]{FD6864}36 & 37                         & 38                         & \cellcolor[HTML]{FFCCC9}39 & 40                         \\ \hline
+    41                         & \cellcolor[HTML]{FD6864}42 & 43                                               & 44                         & \cellcolor[HTML]{FFCCC9}45 & 46                         & 47                         & \cellcolor[HTML]{FD6864}48 & 49                         & 50                         \\ \hline
+    \cellcolor[HTML]{FFCCC9}51 & 52                         & 53                                               & \cellcolor[HTML]{FD6864}54 & 55                         & 56                         & \cellcolor[HTML]{FFCCC9}57 & 58                         & 59                         & \cellcolor[HTML]{FD6864}60 \\ \hline
+    61                         & 62                         & \cellcolor[HTML]{FFCCC9}63                       & 64                         & 65                         & \cellcolor[HTML]{FD6864}66 & 67                         & 68                         & \cellcolor[HTML]{FFCCC9}69 & 70                         \\ \hline
+    71                         & \cellcolor[HTML]{FD6864}72 & 73                                               & 74                         & \cellcolor[HTML]{FFCCC9}75 & 76                         & 77                         & \cellcolor[HTML]{FD6864}78 & 79                         & 80                         \\ \hline
+    \cellcolor[HTML]{FFCCC9}81 & 82                         & 83                                               & \cellcolor[HTML]{FD6864}84 & 85                         & 86                         & \cellcolor[HTML]{FFCCC9}87 & 88                         & 89                         & \cellcolor[HTML]{FD6864}90 \\ \hline
+    91                         & 92                         & \cellcolor[HTML]{FFCCC9}93                       & 94                         & 95                         & \cellcolor[HTML]{FD6864}96 & \cellcolor[HTML]{FFFFFF}97 & 98                         & \cellcolor[HTML]{FFCCC9}99 & 100                        \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (XI)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{F8FF00}2 & \cellcolor[HTML]{F8FF00}{\color[HTML]{FE0000} 3} & 4  & 5                          & 6  & 7                          & 8  & \cellcolor[HTML]{FFCCC9}9  & 10  \\ \hline
+    11                         & 12                        & 13                                               & 14 & \cellcolor[HTML]{FFCCC9}15 & 16 & 17                         & 18 & 19                         & 20  \\ \hline
+    \cellcolor[HTML]{FFCCC9}21 & 22                        & 23                                               & 24 & 25                         & 26 & \cellcolor[HTML]{FFCCC9}27 & 28 & 29                         & 30  \\ \hline
+    31                         & 32                        & \cellcolor[HTML]{FFCCC9}33                       & 34 & 35                         & 36 & 37                         & 38 & \cellcolor[HTML]{FFCCC9}39 & 40  \\ \hline
+    41                         & 42                        & 43                                               & 44 & \cellcolor[HTML]{FFCCC9}45 & 46 & 47                         & 48 & 49                         & 50  \\ \hline
+    \cellcolor[HTML]{FFCCC9}51 & 52                        & 53                                               & 54 & 55                         & 56 & \cellcolor[HTML]{FFCCC9}57 & 58 & 59                         & 60  \\ \hline
+    61                         & 62                        & \cellcolor[HTML]{FFCCC9}63                       & 64 & 65                         & 66 & 67                         & 68 & \cellcolor[HTML]{FFCCC9}69 & 70  \\ \hline
+    71                         & 72                        & 73                                               & 74 & \cellcolor[HTML]{FFCCC9}75 & 76 & 77                         & 78 & 79                         & 80  \\ \hline
+    \cellcolor[HTML]{FFCCC9}81 & 82                        & 83                                               & 84 & 85                         & 86 & \cellcolor[HTML]{FFCCC9}87 & 88 & 89                         & 90  \\ \hline
+    91                         & 92                        & \cellcolor[HTML]{FFCCC9}93                       & 94 & 95                         & 96 & 97                         & 98 & \cellcolor[HTML]{FFCCC9}99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (XII)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{F8FF00}2 & \cellcolor[HTML]{F8FF00}3  & 4  & {\color[HTML]{FE0000} 5}   & 6  & 7                          & 8  & \cellcolor[HTML]{FFCCC9}9  & 10  \\ \hline
+    11                         & 12                        & 13                         & 14 & \cellcolor[HTML]{FFCCC9}15 & 16 & 17                         & 18 & 19                         & 20  \\ \hline
+    \cellcolor[HTML]{FFCCC9}21 & 22                        & 23                         & 24 & 25                         & 26 & \cellcolor[HTML]{FFCCC9}27 & 28 & 29                         & 30  \\ \hline
+    31                         & 32                        & \cellcolor[HTML]{FFCCC9}33 & 34 & 35                         & 36 & 37                         & 38 & \cellcolor[HTML]{FFCCC9}39 & 40  \\ \hline
+    41                         & 42                        & 43                         & 44 & \cellcolor[HTML]{FFCCC9}45 & 46 & 47                         & 48 & 49                         & 50  \\ \hline
+    \cellcolor[HTML]{FFCCC9}51 & 52                        & 53                         & 54 & 55                         & 56 & \cellcolor[HTML]{FFCCC9}57 & 58 & 59                         & 60  \\ \hline
+    61                         & 62                        & \cellcolor[HTML]{FFCCC9}63 & 64 & 65                         & 66 & 67                         & 68 & \cellcolor[HTML]{FFCCC9}69 & 70  \\ \hline
+    71                         & 72                        & 73                         & 74 & \cellcolor[HTML]{FFCCC9}75 & 76 & 77                         & 78 & 79                         & 80  \\ \hline
+    \cellcolor[HTML]{FFCCC9}81 & 82                        & 83                         & 84 & 85                         & 86 & \cellcolor[HTML]{FFCCC9}87 & 88 & 89                         & 90  \\ \hline
+    91                         & 92                        & \cellcolor[HTML]{FFCCC9}93 & 94 & 95                         & 96 & 97                         & 98 & \cellcolor[HTML]{FFCCC9}99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (XIII)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{F8FF00}2 & \cellcolor[HTML]{F8FF00}3  & 4  & \cellcolor[HTML]{F8FF00}{\color[HTML]{FE0000} 5} & 6  & 7                          & 8  & \cellcolor[HTML]{FFCCC9}9  & 10  \\ \hline
+    11                         & 12                        & 13                         & 14 & \cellcolor[HTML]{FFCCC9}15                       & 16 & 17                         & 18 & 19                         & 20  \\ \hline
+    \cellcolor[HTML]{FFCCC9}21 & 22                        & 23                         & 24 & 25                                               & 26 & \cellcolor[HTML]{FFCCC9}27 & 28 & 29                         & 30  \\ \hline
+    31                         & 32                        & \cellcolor[HTML]{FFCCC9}33 & 34 & 35                                               & 36 & 37                         & 38 & \cellcolor[HTML]{FFCCC9}39 & 40  \\ \hline
+    41                         & 42                        & 43                         & 44 & \cellcolor[HTML]{FFCCC9}45                       & 46 & 47                         & 48 & 49                         & 50  \\ \hline
+    \cellcolor[HTML]{FFCCC9}51 & 52                        & 53                         & 54 & 55                                               & 56 & \cellcolor[HTML]{FFCCC9}57 & 58 & 59                         & 60  \\ \hline
+    61                         & 62                        & \cellcolor[HTML]{FFCCC9}63 & 64 & 65                                               & 66 & 67                         & 68 & \cellcolor[HTML]{FFCCC9}69 & 70  \\ \hline
+    71                         & 72                        & 73                         & 74 & \cellcolor[HTML]{FFCCC9}75                       & 76 & 77                         & 78 & 79                         & 80  \\ \hline
+    \cellcolor[HTML]{FFCCC9}81 & 82                        & 83                         & 84 & 85                                               & 86 & \cellcolor[HTML]{FFCCC9}87 & 88 & 89                         & 90  \\ \hline
+    91                         & 92                        & \cellcolor[HTML]{FFCCC9}93 & 94 & 95                                               & 96 & 97                         & 98 & \cellcolor[HTML]{FFCCC9}99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (XIV)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{F8FF00}2 & \cellcolor[HTML]{F8FF00}3  & 4  & \cellcolor[HTML]{F8FF00}{\color[HTML]{FE0000} 5} & 6  & 7                          & 8  & \cellcolor[HTML]{FFCCC9}9  & \cellcolor[HTML]{FD6864}10 \\ \hline
+    11                         & 12                        & 13                         & 14 & \cellcolor[HTML]{FFCCC9}15                       & 16 & 17                         & 18 & 19                         & 20                         \\ \hline
+    \cellcolor[HTML]{FFCCC9}21 & 22                        & 23                         & 24 & 25                                               & 26 & \cellcolor[HTML]{FFCCC9}27 & 28 & 29                         & 30                         \\ \hline
+    31                         & 32                        & \cellcolor[HTML]{FFCCC9}33 & 34 & 35                                               & 36 & 37                         & 38 & \cellcolor[HTML]{FFCCC9}39 & 40                         \\ \hline
+    41                         & 42                        & 43                         & 44 & \cellcolor[HTML]{FFCCC9}45                       & 46 & 47                         & 48 & 49                         & 50                         \\ \hline
+    \cellcolor[HTML]{FFCCC9}51 & 52                        & 53                         & 54 & 55                                               & 56 & \cellcolor[HTML]{FFCCC9}57 & 58 & 59                         & 60                         \\ \hline
+    61                         & 62                        & \cellcolor[HTML]{FFCCC9}63 & 64 & 65                                               & 66 & 67                         & 68 & \cellcolor[HTML]{FFCCC9}69 & 70                         \\ \hline
+    71                         & 72                        & 73                         & 74 & \cellcolor[HTML]{FFCCC9}75                       & 76 & 77                         & 78 & 79                         & 80                         \\ \hline
+    \cellcolor[HTML]{FFCCC9}81 & 82                        & 83                         & 84 & 85                                               & 86 & \cellcolor[HTML]{FFCCC9}87 & 88 & 89                         & 90                         \\ \hline
+    91                         & 92                        & \cellcolor[HTML]{FFCCC9}93 & 94 & 95                                               & 96 & 97                         & 98 & \cellcolor[HTML]{FFCCC9}99 & 100                        \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (XV)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{F8FF00}2 & \cellcolor[HTML]{F8FF00}3  & 4  & \cellcolor[HTML]{F8FF00}{\color[HTML]{FE0000} 5} & 6  & 7                          & 8  & \cellcolor[HTML]{FFCCC9}9  & \cellcolor[HTML]{FD6864}10 \\ \hline
+    11                         & 12                        & 13                         & 14 & \cellcolor[HTML]{FD6864}15                       & 16 & 17                         & 18 & 19                         & 20                         \\ \hline
+    \cellcolor[HTML]{FFCCC9}21 & 22                        & 23                         & 24 & 25                                               & 26 & \cellcolor[HTML]{FFCCC9}27 & 28 & 29                         & 30                         \\ \hline
+    31                         & 32                        & \cellcolor[HTML]{FFCCC9}33 & 34 & 35                                               & 36 & 37                         & 38 & \cellcolor[HTML]{FFCCC9}39 & 40                         \\ \hline
+    41                         & 42                        & 43                         & 44 & \cellcolor[HTML]{FFCCC9}45                       & 46 & 47                         & 48 & 49                         & 50                         \\ \hline
+    \cellcolor[HTML]{FFCCC9}51 & 52                        & 53                         & 54 & 55                                               & 56 & \cellcolor[HTML]{FFCCC9}57 & 58 & 59                         & 60                         \\ \hline
+    61                         & 62                        & \cellcolor[HTML]{FFCCC9}63 & 64 & 65                                               & 66 & 67                         & 68 & \cellcolor[HTML]{FFCCC9}69 & 70                         \\ \hline
+    71                         & 72                        & 73                         & 74 & \cellcolor[HTML]{FFCCC9}75                       & 76 & 77                         & 78 & 79                         & 80                         \\ \hline
+    \cellcolor[HTML]{FFCCC9}81 & 82                        & 83                         & 84 & 85                                               & 86 & \cellcolor[HTML]{FFCCC9}87 & 88 & 89                         & 90                         \\ \hline
+    91                         & 92                        & \cellcolor[HTML]{FFCCC9}93 & 94 & 95                                               & 96 & 97                         & 98 & \cellcolor[HTML]{FFCCC9}99 & 100                        \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (XVI)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |
+    >{\columncolor[HTML]{FFCCC9}}c |
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |c|
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{F8FF00}2 & \cellcolor[HTML]{F8FF00}3  & 4  & \cellcolor[HTML]{F8FF00}{\color[HTML]{FE0000} 5} & 6  & 7                          & 8  & \cellcolor[HTML]{FFCCC9}9  & 10  \\ \hline
+    11                         & 12                        & 13                         & 14 & 15                                               & 16 & 17                         & 18 & 19                         & 20  \\ \hline
+    \cellcolor[HTML]{FFCCC9}21 & 22                        & 23                         & 24 & 25                                               & 26 & \cellcolor[HTML]{FFCCC9}27 & 28 & 29                         & 30  \\ \hline
+    31                         & 32                        & \cellcolor[HTML]{FFCCC9}33 & 34 & 35                                               & 36 & 37                         & 38 & \cellcolor[HTML]{FFCCC9}39 & 40  \\ \hline
+    41                         & 42                        & 43                         & 44 & 45                                               & 46 & 47                         & 48 & 49                         & 50  \\ \hline
+    \cellcolor[HTML]{FFCCC9}51 & 52                        & 53                         & 54 & 55                                               & 56 & \cellcolor[HTML]{FFCCC9}57 & 58 & 59                         & 60  \\ \hline
+    61                         & 62                        & \cellcolor[HTML]{FFCCC9}63 & 64 & 65                                               & 66 & 67                         & 68 & \cellcolor[HTML]{FFCCC9}69 & 70  \\ \hline
+    71                         & 72                        & 73                         & 74 & 75                                               & 76 & 77                         & 78 & 79                         & 80  \\ \hline
+    \cellcolor[HTML]{FFCCC9}81 & 82                        & 83                         & 84 & 85                                               & 86 & \cellcolor[HTML]{FFCCC9}87 & 88 & 89                         & 90  \\ \hline
+    91                         & 92                        & \cellcolor[HTML]{FFCCC9}93 & 94 & 95                                               & 96 & 97                         & 98 & \cellcolor[HTML]{FFCCC9}99 & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Il crivello di Eratostene (XVII)}
+
+  Il \textbf{crivello di Eratostene} è un algoritmo per trovare
+  tutti i numeri primi da $1$ a un intero massimo $N$.
+
+  \begin{table}[]
+  \centering
+    \begin{tabular}{|
+    >{\columncolor[HTML]{F8FF00}}c |
+    >{\columncolor[HTML]{FFCCC9}}c |
+    >{\columncolor[HTML]{F8FF00}}c |
+    >{\columncolor[HTML]{FFCCC9}}c |
+    >{\columncolor[HTML]{FFCCC9}}c |
+    >{\columncolor[HTML]{FFCCC9}}c |
+    >{\columncolor[HTML]{F8FF00}}c |
+    >{\columncolor[HTML]{FFCCC9}}c |
+    >{\columncolor[HTML]{FFCCC9}}c |
+    >{\columncolor[HTML]{FFCCC9}}c |}
+    \hline
+    \cellcolor[HTML]{C0C0C0}1  & \cellcolor[HTML]{F8FF00}2 & 3                          & 4  & \cellcolor[HTML]{F8FF00}5 & 6  & 7                          & 8  & 9                          & 10  \\ \hline
+    11                         & 12                        & 13                         & 14 & 15                        & 16 & 17                         & 18 & \cellcolor[HTML]{F8FF00}19 & 20  \\ \hline
+    \cellcolor[HTML]{FFCCC9}21 & 22                        & 23                         & 24 & 25                        & 26 & \cellcolor[HTML]{FFCCC9}27 & 28 & \cellcolor[HTML]{F8FF00}29 & 30  \\ \hline
+    31                         & 32                        & \cellcolor[HTML]{FFCCC9}33 & 34 & 35                        & 36 & 37                         & 38 & 39                         & 40  \\ \hline
+    41                         & 42                        & 43                         & 44 & 45                        & 46 & 47                         & 48 & 49                         & 50  \\ \hline
+    \cellcolor[HTML]{FFCCC9}51 & 52                        & 53                         & 54 & 55                        & 56 & \cellcolor[HTML]{FFCCC9}57 & 58 & \cellcolor[HTML]{F8FF00}59 & 60  \\ \hline
+    61                         & 62                        & \cellcolor[HTML]{FFCCC9}63 & 64 & 65                        & 66 & 67                         & 68 & 69                         & 70  \\ \hline
+    71                         & 72                        & 73                         & 74 & 75                        & 76 & \cellcolor[HTML]{FFCCC9}77 & 78 & \cellcolor[HTML]{F8FF00}79 & 80  \\ \hline
+    \cellcolor[HTML]{FFCCC9}81 & 82                        & 83                         & 84 & 85                        & 86 & \cellcolor[HTML]{FFCCC9}87 & 88 & \cellcolor[HTML]{F8FF00}89 & 90  \\ \hline
+    \cellcolor[HTML]{FFCCC9}91 & 92                        & \cellcolor[HTML]{FFCCC9}93 & 94 & 95                        & 96 & 97                         & 98 & 99                         & 100 \\ \hline
+    \end{tabular}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Esercizio: trovare tutti i numeri primi fino a N (II)}
+  \begin{itemize}
+   \item  Scrivere un programma che riempa un vettore di numeri da 1 a 100 e usando l'algoritmo
+	  del crivello di Eratostene crei alla fine un altro vettore contenente i numeri primi
+	  fino a 100.
+  \end{itemize}
+\end{frame}

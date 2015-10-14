@@ -1,0 +1,62 @@
+\begin{frame}{Iterazione e ricorsione (I)}
+
+  Una distizione importante per quanto riguarda le funzione è la
+  seguente:
+  \begin{itemize}
+   \item funzioni \textbf{iterative}
+   \item funzioni \textbf{ricorsive}
+  \end{itemize}
+  
+  Una funzione \alert{\textbf{ricorsiva}} è una funzione che
+  \textbf{richiama se stessa}. Altrimenti è \structure{\textbf{iterativa}}.
+
+  Le funzioni viste finora sono iterative.
+\end{frame}
+
+\begin{frame}{Iterazione e ricorsione (II)}
+
+  Le funzioni ricorsive si trovano molto comunemente anche in matematica.
+  
+  Esempi:
+  \begin{itemize}
+   \item fattoriale: $n! = n \cdot n - 1 \cdot \dots \cdot 3 \cdot 2 \cdot 1 := n \cdot (n - 1)!$
+   \item successione di Fibonacci: $F_{n} = F_{n-1} + F_{n-2}$
+  \end{itemize}
+  ovviamente la definzione deve avere alcuni \textbf{casi limite} altrimenti si andrebbe
+  avanti all'infinito.
+
+  ${}$\newline
+
+  \begin{minipage}{0.8\paperwidth}
+    Per i casi di cui sopra:
+    \begin{itemize}
+      \item fattoriale: $n = 0 \Rightarrow 0! = 1$ (il fattoriale non è definito per numeri interi negativi)
+      \item successione di Fibonacci: $F_{0} = 0$ e $F_{1} = 1$\footnote{Tradizionalmente si definiva 
+	    $F_{0} = 1$ e $F_{1} = 1$, ma ora si definisce di solito come sopra. Si veda anche \url{https://oeis.org/A000045}}
+    \end{itemize}
+  \end{minipage}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Definizione ricorsiva del fattoriale}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jpublic \Jclass FattorialeRicorsivo {
+
+    \Jpublic \Jstatic \Jint fattoriale(\Jint n) {
+      \Jif[n == 0] {
+        \Jreturn 1;
+      }
+      \Jreturn n * fattoriale(n - 1);
+    }
+
+    \Jpublic \Jstatic \Jvoid main(String[] \Jargs) {
+      \Jint numero = 10;
+      \Jint risultato = 0;
+      
+      risultato = fattoriale(numero);
+      \Jprintf["Il fattoriale di \%d è: \%d"][numero, risultato];
+    }
+  }
+  \end{JavaCodePlain}
+\end{frame}

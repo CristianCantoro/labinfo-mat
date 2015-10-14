@@ -1,0 +1,89 @@
+\DeclareMathOperator*{\len}{\textbf{length of }}
+
+\newcommand{\btVFill}{\vskip0pt plus 1filll}
+
+\setbeamercolor{structure}{fg=cyan!90!black}
+
+\newenvironment{variableblock}[3]{%
+\setbeamercolor{block body}{#2}
+\setbeamercolor{block title}{#3}
+\begin{block}{#1}}{\end{block}}
+
+\lstdefinestyle{JavaPlain}{ %
+basicstyle=\scriptsize\ttfamily, % the size of the fonts 
+numbers=left,                   % where to put the line-numbers
+numberstyle=\tiny,      % the size of the fonts that are used for th
+stepnumber=1,                   % the step between two line-numbers
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding 
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen
+fancyvrb=true,
+fvcmdparams=textbf 1 textit 1,
+}
+
+% Colors
+\definecolor{ballblue}{rgb}{0.13, 0.67, 0.8}
+\newcommand\Red[1]{\textcolor{red}{#1}}
+\newcommand\Green[1]{\textcolor{green!50!black}{#1}}
+\newcommand\Blue[1]{\textcolor{blue!60!white}{#1}}
+\newcommand\Violet[1]{\textcolor{violet}{#1}}
+\newcommand\LightBlue[1]{\textcolor{ballblue}{#1}}
+
+% Helpers
+\newcommand\String[1]{\textcolor{blue!80!blue}{#1}}
+\newcommand\Word[1]{\textcolor{purple!90!red}{#1}}
+\newcommand\bang{!}
+
+% Control structures
+\newcommand\JavaIf{\Word{if}}
+\newcommand\JavaPrint{\LightBlue{print}}
+% \newcommand\JavaFor{\Word{for}}
+
+% Shortcut for JavaFor:
+% \JavaFor (\Blue!init| \Green!n <= Math.sqrt(numero);| \Violet!n++|)
+
+% \usepackage{keyval}
+% \makeatletter
+% % ========= KEY DEFINITIONS =========
+% \define@key{JavaFor}{init}{\Blue{#1}}
+% \define@key{JavaFor}{cond}{\Green{#1}}
+% \define@key{JavaFor}{inc}{\Violet{#1}}
+% % ========= KEY DEFAULTS =========
+% \newcommand{\JavaFor}[0][]{%
+%   \begingroup%
+%   \setkeys{myparbox}{#1}% Set new keys
+%   \Word{for} \ifthenelse{}{()}{}
+%   \endgroup%
+% }
+% \makeatother
+
+
+\usepackage{xparse}
+\usepackage{ifthen}
+\newcommand\JavaForColors[3]{\Blue{#1}; \Green{#2}; \Violet{#3}}
+\DeclareDocumentCommand\JavaForOptions { vvv }{%
+  \Word{for}%
+  \IfValueT{#1}{%
+     (\JavaForColors{#1}{#2}{#3}) %
+  }%
+}
+% \newcommand\JavaFor[1][]{\JavaForOptions{#1}}
+\newcommand\JavaFor[1][-NoValue-]{%
+  \ifthenelse{\equal{#1}{-NoValue-}}{\JavaForOptions}{\JavaForOptions{#1}}%
+}
+
+\newenvironment{JavaCodePlain}[1][]
+  { \VerbatimEnvironment%
+    \begin{Verbatim}[#1]}
+  { \end{Verbatim}  } 
+
+\algdef{SE}[DOWHILE]{Do}{DoWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}

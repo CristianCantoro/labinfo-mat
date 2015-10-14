@@ -1,0 +1,114 @@
+\subsection[Esercizi]{Esercizi}
+
+\begin{frame}[fragile]\frametitle{Esercizi (I)}
+
+  \begin{itemize}
+    \item inizializzare un array  di 10 interi e inserire in ciascun elemento
+	  il valore 5 (utilizzare un ciclo for)
+    \item inizializzare un  array  di  interi e assegnare a ciascun elemento
+	  un valore uguale alla sua posizione 
+    \item Dopo aver inizializzato l'array precedente, copiare il suo  contenuto 
+	  in ordine nverso in un altro array della stessa dimensione.
+    \begin{itemize}
+      \item $(1, 2, 3) \rightarrow (3, 2, 1)$
+    \end{itemize}
+  \end{itemize}
+
+  Suggerimento, con \texttt{arr.\Blue{length}} si può ottenere la lunghezza dell'array:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Jint arr[]
+    arr = \Word!new| \Jint[10];
+    
+    \Jfor (\Jint i = 0; i < arr.length; i++) {
+      \dots
+    }  
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}{Esercizi (I)}
+
+  \begin{itemize}
+  \item Implementare una funzione che dato in ingresso un vettore di numeri interi
+	restituisca quel vettore ordinato in ordine crescente.
+  \end{itemize}
+
+  Esistono tantissimi algoritmi di ordinamento, ecco l'idea di base per uno di essi:
+  \begin{itemize}
+   \item array $v$ di lunghezza $N$, si fa scorrere l'indice $i$ da  $1$ a $N-1$ ripetendo i seguenti passi:
+   \begin{enumerate}
+    \item si cerca il più piccolo elemento della sottosequenza $v[1..N]$
+    \item si scambia questo elemento con l'elemento $i$-esimo
+   \end{enumerate}
+  \end{itemize}
+
+  Un'animazione descrittiva è disponibile a questo indirizzo:
+  {\scriptsize \url{https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif}}
+
+\end{frame}
+
+\begin{frame}{Esercizi (II)}
+
+  \begin{itemize}
+   \item Scrivere una funzione che calcoli il prodotto scalare (\texttt{\Word{double}}) di due vettori 
+   (di \texttt{\Word{double}}) :
+  \end{itemize}
+
+  \begin{equation}
+    \langle  v, w \rangle = \sum_{i=1}^{N} v_i \cdot w_i
+  \end{equation}
+
+\end{frame}
+
+\begin{frame}{Esercizi (III)}
+
+  \begin{itemize}
+    \item Scrivere un programma che data in ingresso una matrice di numeri casuali ne calcoli la matrice trasposta.
+    \begin{itemize}
+      \item Scrivere una funzione che stampi una matrice
+      \item Scrivere una funzione che calcoli la matrice trasposta data una matrice
+    \end{itemize}
+  \end{itemize}
+
+  Data la matrice $A$, la matrice trasposta - indicata con $A^T$ - si ottiene scambiando le righe con le colonne:
+  \begin{columns}[T]
+    \begin{column}[T]{5cm}
+      \begin{equation*}
+	A = \left(
+	\begin{array}{ccc}
+	  1 & 9 & 3 \\
+	  0 & 4 & 5 \\
+	  2 & 7 & 0 \\
+	\end{array} \right)
+      \end{equation*}      
+    \end{column}
+    \begin{column}[T]{5cm}
+      \begin{equation*}
+	  A^T = \left(
+	  \begin{array}{ccc}
+	    1 & 0 & 2 \\
+	    9 & 4 & 7 \\
+	    3 & 5 & 0 \\
+	  \end{array} \right)
+      \end{equation*}  
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\begin{frame}{Esercizi (IV)}
+  \begin{itemize}
+    \item Scrivere un programma che dati in ingresso i tre coefficienti 
+	  $a$, $b$ e $c$ risolva le equazioni di secondo grado usando la formula.
+    \begin{itemize}
+      \item il programma deve gestire i casi in cui non esistano soluzioni reali
+      (discriminante $\Delta = (b^2 - 4ac)$ negativo),
+    \end{itemize}
+
+  \end{itemize}
+
+  \begin{equation*}
+    x_{1,2} = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+  \end{equation*}
+
+\end{frame}

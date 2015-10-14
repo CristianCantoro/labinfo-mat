@@ -1,0 +1,108 @@
+\DeclareMathOperator*{\len}{\textbf{length of }}
+
+\newcommand{\btVFill}{\vskip0pt plus 1filll}
+
+\setbeamercolor{structure}{fg=cyan!90!black}
+
+\newenvironment{variableblock}[3]{%
+\setbeamercolor{block body}{#2}
+\setbeamercolor{block title}{#3}
+\begin{block}{#1}}{\end{block}}
+
+\lstdefinestyle{JavaPlain}{ %
+basicstyle=\scriptsize\ttfamily, % the size of the fonts 
+numbers=left,                   % where to put the line-numbers
+numberstyle=\tiny,      % the size of the fonts that are used for th
+stepnumber=1,                   % the step between two line-numbers
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding 
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen
+fancyvrb=true,
+fvcmdparams=textbf 1 textit 1,
+}
+
+% Colors
+\definecolor{ballblue}{rgb}{0.13, 0.67, 0.8}
+\definecolor{brown(web)}{rgb}{0.65, 0.16, 0.16}
+\definecolor{brown(traditional)}{rgb}{0.59, 0.29, 0.0}
+
+\newcommand\Red[1]{\textcolor{red}{#1}}
+\newcommand\Green[1]{\textcolor{green!50!black}{#1}}
+\newcommand\LightGreen[1]{\textcolor{green!60!black}{#1}}
+\newcommand\Blue[1]{\textcolor{blue!60!white}{#1}}
+\newcommand\Violet[1]{\textcolor{violet}{#1}}
+\newcommand\LightBlue[1]{\textcolor{ballblue}{#1}}
+\newcommand\Grey[1]{\textcolor{gray}{#1}}
+\newcommand\Gray[1]{\textcolor{gray}{#1}}
+\newcommand\Brown[1]{\textcolor{brown(web)}{#1}}
+\newcommand\LightBrown[1]{\textcolor{brown(traditional)}{#1}}
+
+% Helpers
+\newcommand\Jcomment[1]{\LightGreen{// #1}}
+\newcommand\JcommentMulti[1]{\LightGreen{/* #1}}
+\newcommand\String[1]{\textcolor{blue!80!blue}{#1}}
+\newcommand\Word[1]{\textcolor{purple!90!red}{#1}}
+\newcommand\bang{!}
+\newcommand\pipe{\|}
+
+% Prints
+% \newcommand\Jprintf[2][]{\LightBlue{printf}(\String{#1}, #2)}
+\newcommandtwoopt{\Jprintf}[2][-NoValue-][-NoValue-]{%
+    \ifthenelse{\equal{#2}{-NoValue-}}{\LightBlue{printf}(\String{#1})}{\LightBlue{printf}(\String{#1}, #2)}%
+}
+
+\newcommand\Jprintln[1]{\LightBlue{println}(\String{#1})}
+\newcommand\JprintLN{\LightBlue{println}}
+
+% Control structures
+% Shortcut for JavaFor:
+% \JavaFor (\Blue!init| \Green!n <= Math.sqrt(numero);| \Violet!n++|)
+\newcommand\JavaForColors[3]{\Blue{#1}; \Green{#2}; \Violet{#3}}
+
+\newcommand\Jfor[1][-NoValue-]{%
+  \ifthenelse{\equal{#1}{-NoValue-}}{\Word{for}}{\JavaForO[#1]}%
+}
+
+\newcommandtwoopt{\JavaForO}[3][-NoValue-][-NoValue-]{%
+    \JavaForOptions{#1}{#2}{#3}%
+}
+
+\DeclareDocumentCommand\JavaForOptions{ ggg }{%
+  \Word{for}\IfValueT{#1}{%
+    (\JavaForColors{#1}{#2}{#3}) %
+  }%
+}
+
+% Shortcut for JavaFor:
+% \JavaFor (\Blue!init| \Green!n <= Math.sqrt(numero);| \Violet!n++|)
+\newcommand\Jif[1][-NoValue-]{%
+  \ifthenelse{\equal{#1}{-NoValue-}}{\Word{if}}{\Word{if} (\Green{#1})}%
+}
+
+% Other reserved words
+\newcommand\Jstatic{\Word{static}}
+\newcommand\Jpublic{\Word{public}}
+\newcommand\Jprivate{\Word{private}}
+\newcommand\Jdouble{\Word{double}}
+\newcommand\Jfloat{\Word{float}}
+\newcommand\Jint{\Word{int}}
+\newcommand\Jvoid{\Word{void}}
+\newcommand\Jreturn{\Word{return}}
+\newcommand\Jclass{\Word{class}}
+\newcommand\Jargs{\LightBrown{args}}
+
+\newenvironment{JavaCodePlain}[1][]
+  { \VerbatimEnvironment%
+    \begin{Verbatim}[#1]}
+  { \end{Verbatim}  } 
+
+\algdef{SE}[DOWHILE]{Do}{DoWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}%
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
