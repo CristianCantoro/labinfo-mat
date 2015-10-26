@@ -35,9 +35,9 @@
 
   Esistono tantissimi algoritmi di ordinamento, ecco l'idea di base per uno di essi:
   \begin{itemize}
-   \item array $v$ di lunghezza $N$, si fa scorrere l'indice $i$ da  $1$ a $N-1$ ripetendo i seguenti passi:
+   \item array $v$ di lunghezza $N$, si fa scorrere l'indice $i$ da  $0$ a $N-1$ ripetendo i seguenti passi:
    \begin{enumerate}
-    \item si cerca il più piccolo elemento della sottosequenza $v[1..N]$
+    \item si cerca il più piccolo elemento della sottosequenza $v[i..N]$
     \item si scambia questo elemento con l'elemento $i$-esimo
    \end{enumerate}
   \end{itemize}
