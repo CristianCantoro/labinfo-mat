@@ -1,0 +1,98 @@
+
+\begin{frame}{Scrittura file (I)}
+  In modo analogo a quanto avviene per la lettura da file, per la scrittura:
+  \begin{enumerate}[<+->]
+   \item dobbiamo creare un oggetto che rappresenti il file su cui vogliamo scrivere,
+   esso rappresenta il file nel \emph{filesystem};
+   \item utilizziamo la classe di Java \alert{\texttt{FileWriter}} , questa classe si
+   preoccupa di preparare il file per la scrittura gestendo, per esempio, l'\textbf{encoding} del file.
+   \item creiamo un ``buffer'' \alert{\texttt{BufferedWriter}} che effettivamente conterrà il 
+   testo da scrivere sul file.
+   \item per scrivere usiamo il metodo \alert{\texttt{write()}} del buffer
+   \item Quando abbiamo terminato, chiudiamo il buffer.
+  \end{enumerate}
+  
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Scrittura file (II)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jimport java.io.BufferedWriter;
+  \Jimport java.io.File;
+  \Jimport java.io.FileWriter;
+  \Jimport java.io.IOException;
+
+  \Jpublic \Jclass ScritturaFile {
+    \Jpublic \Jstatic \Jvoid main(String[] args) throws IOException {
+
+      String text = \String!"TestoEsempio"|;
+
+      File file = \Jnew File(\String!"esempio.txt"|);
+      FileWriter fw = \Jnew FileWriter(file);
+      BufferedWriter bw = \Jnew BufferedWriter(fw);
+
+      bw.write(text);
+      bw.flush();
+      bw.close();
+      \dots
+  \end{JavaCodePlain}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Scrittura file (III)}
+
+  Ogni qual volta aggiungiamo una delle classi necessarie alla scrittura
+  su File Java segnala un errore che può essere risolto aggiungengo
+  gli \Word{import} \emph{statement} necessari.
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jimport java.io.BufferedWriter;
+  \Jimport java.io.File;
+  \Jimport java.io.FileWriter;
+  \Jimport java.io.IOException;
+  \end{JavaCodePlain}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Scrittura file (V)}
+
+  Anche quando aggiungiamo il \texttt{FileWriter} dobbiamo preparci a gestire
+  l'eccezione, in questo caso segnaliamo il fatto che il main può generare
+  una \texttt{IOException}.
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+
+  \Jpublic \Jclass ScritturaFile {
+
+    \Jpublic \Jstatic \Jvoid main(String[] args) \textbf!\Jthrows IOException| {
+
+      String text = \String!"TestoEsempio"|;
+
+      File file = \Jnew File(\String!"esempio.txt"|);
+      FileWriter fw = \Jnew FileWriter(file);
+      BufferedWriter bw = \Jnew BufferedWriter(fw);
+
+  \end{JavaCodePlain}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Scrittura file (VI)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+
+  \Jpublic \Jclass ScritturaFile {
+
+    \Jpublic \Jstatic \Jvoid main(String[] args) \Jthrows IOException {
+
+      String text = \String!"TestoEsempio"|;
+
+      File file = \Jnew File(\String!"esempio.txt"|);
+      FileWriter fw = \Jnew FileWriter(file);
+      BufferedWriter bw = \Jnew BufferedWriter(fw);
+
+      bw.write(text);
+      \Jcomment!Forza lo svuotamento del buffer e la scrittura su|
+      \Jcomment!file|
+      bw.flush();
+      bw.close();
+    }
+  }
+  \end{JavaCodePlain}
+\end{frame}

@@ -1,0 +1,25 @@
+
+\begin{frame}{Scrittura su \texttt{stdout} (I)}
+  Abbiamo già visto dei comandi/funzioni per scrivere sullo standard output (``a schermo''):
+  \begin{itemize}
+   \item \texttt{System.out.\LightBlue{print}( \String{stringa} )}
+   \item \texttt{System.out.\LightBlue{prinlnf}( \String{stringa} )}
+   \item \texttt{System.out.\LightBlue{printf}( \String{formato}, argomenti, \dots)}
+  \end{itemize}
+ 
+\end{frame}
+
+\begin{frame}{Scrittura su \texttt{stdout} (II)}
+
+Alcune cose utili:
+  \begin{itemize}
+   \item Con \LightBlue{printf} il formato \String{"\%nd"}, dove $n$ è un numero (intero),
+   stampa spazi aggiuntivi in modo tale che il numero occupi sempre $n$ spazi (si veda 
+   l'esercizio \texttt{MatriceTrasposta});
+   \item Con \LightBlue{printf} il formato \String{"\%0nd"}, dove $n$ è un numero (intero),
+   stampa degli zeri aggiuntivi in modo tale che il numero occupi sempre $n$ spazi, ad
+   esempio \String{"\%03d"} stampa il numero \texttt{7} come \texttt{007};
+   \item altre \emph{sequenze di escape} particolari sono \texttt{\string\t} per inserire una
+   tabulazione (un numero di spazi variabile che allinea l'output lungo una data colonna)
+  \end{itemize}
+\end{frame}

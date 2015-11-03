@@ -1,0 +1,137 @@
+
+\begin{frame}[fragile]\frametitle{Lettura input da tastiera (I)}
+
+  Abbiamo già visto che per stampare dei valori a schermo si usa:
+  \begin{itemize}
+    \item \texttt{\textbf{System.out}}
+  \end{itemize}
+  questo permette di interagire con lo \texttt{stdout}.
+  
+  ${}$
+
+  Analogamente:
+  \begin{itemize}
+    \item \texttt{\textbf{System.in}}
+  \end{itemize}
+  permette di interagire con lo \texttt{stdin}.
+  
+%   ${}$
+% 
+%   Nella libreria \texttt{java.util} di Java esiste l'oggetto \texttt{\textbf{Scanner}} 
+%   che ci permette di utilizzare l’input della console:
+%   \begin{JavaCodePlain}[commandchars=\\!|]
+%   Scanner input = new Scanner(System.in);
+%   \end{JavaCodePlain}     
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Lettura input da tastiera (II)}
+  Nella libreria \texttt{java.util} di Java esiste l'oggetto \texttt{\textbf{Scanner}} 
+  che ci permette di utilizzare l’input della console:
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jimport java.util.Scanner;
+
+  \Jpublic \Jclass LetturaFile {
+
+    \Jpublic \Jstatic \Jvoid main(String[] \Jargs) {
+      Scanner input = \Jnew Scanner(\JsystemIn);
+    
+      \dots
+      
+      \Jcomment!Al termine della lettura chiudere il canale di input|
+      input.close();
+    }
+  }
+  \end{JavaCodePlain}     
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Lettura input da tastiera (III)}
+  
+  Per potere utilizzare \texttt{\textbf{Scanner}} dobbiamo \emph{importare}
+  la libreria \texttt{\textbf{java.util}} aggiungendo la riga:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jimport java.util.Scanner;
+  \end{JavaCodePlain}
+  all'inizio del file.
+  
+  ${}$
+
+  Lo statement \Word{import} è il modo in cui si possono \emph{importare} librerie in
+  un programma Java.
+
+  ${}$
+
+  Una libreria è un insieme di funzioni e/o strutture dati predefinite e predisposte
+  per essere riutilizzate facilmente all'interno di svariati programmi.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Modalità di lettura da \texttt{stdin} (I)}
+
+  Dopo aver dichiarato l'oggetto di tipo \texttt{Scanner}
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  Scanner input = \Jnew Scanner(\JsystemIn);
+  \end{JavaCodePlain}
+
+  si possono usare i seguenti \textbf{metodi}:
+  \begin{itemize}
+   \item \texttt{input.nextInt()} \structure{$\Rightarrow$} lettura di un \Jint;
+   \item \texttt{input.nextDouble()} \structure{$\Rightarrow$} lettura di un \Jdouble;
+   \item \texttt{input.next()} \structure{$\Rightarrow$} lettura di una stringa;
+   \item \texttt{input.nextLine()} \structure{$\Rightarrow$} legge l'intera linea fino al
+	 carattere \texttt{newline} (Invio);
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Modalità di lettura da \texttt{stdin} (II)}
+
+  Se viene inserito un valore di un tipo non corrispondendente viene causato
+  un \textbf{errore} ovvero viene \emph{lanciata un'\textbf{eccezione}}.
+
+  ${}$\\
+  
+  \pause{
+  Se per esempio uso \textbf{\texttt{input.nextInt()}}:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  Inserisci un numero intero: \Green!3.2|
+  \end{JavaCodePlain}
+
+  \begin{redtext}
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \textbf!Exception| in thread "main" java.util.InputMismatchException
+    at java.util.Scanner.throwFor(Scanner.java:864)
+    at java.util.Scanner.next(Scanner.java:1485)
+    at java.util.Scanner.nextInt(Scanner.java:2117)
+    at java.util.Scanner.nextInt(Scanner.java:2076)
+    at LetturaIntero.main(LetturaIntero.java:11)
+  \end{JavaCodePlain}
+  \end{redtext}
+  }
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Modalità di lettura da \texttt{stdin} (III)}
+
+  Esistono dei metodi per controllare il tipo di dato inserito:
+  \begin{itemize}
+   \item \texttt{input.hasNextInt()} \structure{$\Rightarrow$} controlla che venga letto un \Jint;
+   \item \texttt{input.hasNextDouble()} \structure{$\Rightarrow$} controlla che venga letto un \Jdouble;
+   \item etc.
+  \end{itemize}
+
+  Queste funzioni ritornano \Word{true} se il prossimo valore è del tipo indicato:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Jprint!"Inserisci la tua altezza (in cm): "|;
+    \Jwhile (\bang!|input.hasNextInt()) {
+      \Jprintln!"Il numero inserito non è un intero valido."|;
+      \Jprint!"Inserisci la tua altezza (in cm): "|;
+      input.next();
+    }   
+  \end{JavaCodePlain}
+
+
+\end{frame}
+

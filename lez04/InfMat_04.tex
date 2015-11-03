@@ -1,0 +1,77 @@
+\documentclass[10pt]{beamer}
+
+% %%% Style %%%
+\mode<presentation>
+{
+  \usetheme{Berlin}
+  \setbeamertemplate{blocks}[rounded]
+  \setbeamercolor{block title}{bg=gray}
+  \setbeamercovered{transparent}
+}
+
+% %%% Packages %%%
+\input{includes/packages}
+
+% Custom packages (needs absolute path from root document
+\input{includes/titlepage.sty}
+\input{includes/appendixnumberbeamer.sty}
+
+% %%% Macros and custom commands %%%
+\input{includes/macros}
+
+\title[Laboratorio di Informatica - Lezione 4]{Laboratorio di Informatica \\ Lezione 4}
+\author[Cristian Consonni]{Cristian Consonni}
+\date[28/10/2015]{28 ottobre 2015}
+\institute[UniTN]{Università degli Studi di Trento}
+
+% %%% Put slides with section name at the begining of each section %%%
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+%%%%%%%%%% TITLE %%%%%%%%%%
+% Formerly part of title.tex
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+%%%%%%%%%% END TITLE %%%%%%%%%%
+
+\input{sections/intro.tex}
+
+\section{Canali standard}
+\input{sections/standard_streams.tex}
+
+\section{Input da tastiera}
+\input{sections/input_stdin.tex}
+
+\section{Output}
+\input{sections/output.tex}
+
+\section{Esercizi (parte I)}
+\input{sections/eserciziI.tex}
+
+\section{Lettura da File}
+\input{sections/lettura_file.tex}
+
+\section{Scrittura su File}
+\input{sections/scrittura_file.tex}
+
+\section{Esercizi}
+\input{sections/esercizi.tex}
+
+% \appendix
+% \section*{Backup}
+% \input{99backup/backup.tex}
+
+\end{document}

@@ -9,4 +9,5 @@
 */*.pdf
 */*.snm
 */*.toc*
+*/*.vrb
 */sections/*.backup

@@ -1,0 +1,87 @@
+
+\begin{frame}{Note sullo stile}
+
+  \begin{itemize}
+    \item Utilizzare il camelCase/PascalCase
+    \begin{itemize}
+      \item \scriptsize{\url{https://en.wikipedia.org/w/index.php?title=CamelCase&oldid=686054689}}
+    \end{itemize}
+    \item Quando create una classe, la prima lettera è \textbf{Maiuscola}, ad es. \texttt{TestPrimo};
+    \item I metodi e le variabili hanno la lettera iniziale \textbf{minuscola}, ad es. \texttt{sommaInteri}, \texttt{stampaVettore};
+    \item le costanti vanno indicate tutte in \textbf{MAIUSCOLO}, ad es. \texttt{NMAX}, \texttt{EPSILON};
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Canali standard (I)}
+
+  \begin{quote}
+     «I \textbf{canali standard} (o \textbf{standard streams}), in tutti i moderni sistemi operativi,
+     rappresentano i dispositivi logici di input e di output che collegano un programma 
+     con l'ambiente operativo in cui esso viene eseguito (tipicamente un terminale testuale)
+     e che sono connessi automaticamente al suo avvio.»
+  \end{quote}
+
+  \vfill
+
+  \begin{minipage}[c]{10cm}
+    \scriptsize{fonte: \url{https://it.wikipedia.org/wiki/Canali_standard}}
+  \end{minipage}
+
+\end{frame}
+
+\begin{frame}{Canali standard (II)}
+
+  Esistono tre canali standard predifiniti:
+  \begin{itemize}
+   \item \texttt{\textbf{stdin}}: \emph{standard input};
+   \item \texttt{\textbf{stdout}}: \emph{standard output};
+   \item \texttt{\textbf{stderr}}: \emph{standard error};
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Canali standard (III)}
+
+  I canali standard possono essere rappresentati nel modo seguente:
+  \begin{center}
+    \begin{tikzpicture}[baseline=-0.5ex, on grid, node distance=2cm]
+      \node (input) {input};
+      \node[draw,right= 3cm of input, minimum size=1.25cm] (prog) {\texttt{main}}; 
+      \node[right= 3cm of prog] (output) {output};
+      \node[below= 2cm of prog] (error) {\Red{\textbf{errors}}};
+
+      \draw[-latex] (input) -- node[anchor=south,pos=0.5]{\texttt{stdin}}(prog);
+      \draw[-latex] (prog)  -- node[anchor=south,pos=0.5]{\texttt{stdout}}(output);
+      \draw[-latex] (prog)  -- node[anchor=west,pos=0.5]{\texttt{stderr}}(error);
+    \end{tikzpicture}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Canali standard (IV)}
+  Questi canali sono tutti legati al \textbf{terminale} (o \emph{console} o \emph{command prompt}).
+  
+  \pause{Per esempio, tramite il terminale possiamo:}
+  \begin{itemize}[<+(1)->]
+   \item leggere un input da terminale (\texttt{stdin});
+   \item stamparlo a schermo (\texttt{stdout});
+   \item raccogliere un messaggio di errore (\texttt{stderr});
+  \end{itemize}
+\end{frame} 
+
+\begin{frame}{Canali standard (V)}
+
+  In sistemi Unix (Linux e Mac OS X) è possibile separare (redirezionare) i diversi streams
+  lanciando il comando con una sintassi speciale:
+  \begin{center}
+    \texttt{java LetturaFile <in 1>out 2>err}
+  \end{center}
+  
+   \begin{itemize}[<+(1)->]
+     \item \texttt{<} redireziona lo \texttt{stdin};
+     \item \texttt{1>} redireziona lo \texttt{stdout};
+     \item \texttt{2>} redireziona lo \texttt{stderr};
+   \end{itemize}
+
+\end{frame}

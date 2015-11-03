@@ -1,0 +1,186 @@
+
+\begin{frame}{Lettura da file (I)}
+
+  Il caso della lettura da file è simile a quello della lettura da \texttt{stdin}:
+  \begin{itemize}
+   \item viene creato un \textbf{oggetto} \texttt{File} che rappresenta il file nel
+   \emph{filesystem}.
+   \item si usa uno \texttt{Scanner} come nel caso della lettura da \emph{standard input}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Lettura da file (II)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jimport java.io.File;
+  \Jimport java.util.Scanner;
+
+  \Jpublic \Jclass LetturaFile {
+    \Jpublic \Jstatic \Jvoid main(String[] \Jargs) {
+
+      File file = \Jnew File(\String!"esempio.txt"|);
+      Scanner scan = \Jnew Scanner(file);
+
+      \dots
+  \end{JavaCodePlain}
+
+  \pause{
+  Si noti l'utilizzo delle due librerie:
+  \begin{itemize}
+   \item \texttt{java.io.File}
+   \item \texttt{java.util.Scanner}
+  \end{itemize}
+  }
+  
+\end{frame}
+
+\begin{frame}{Percorsi (I)}
+  Prima abbiamo indicato \String{"esempio.txt"} come nome del file, in generale possiamo
+  indicare un \textbf{percorso} (o \textbf{path}).
+
+  ${}$\\
+
+  I percorsi si specificano in modo diverso per sistemi operativi diversi:
+  \begin{itemize}
+   \item \structure{Unix (Linux, Mac OS X)} \\
+	 \texttt{\Red{\textbf{/}}utente\Red{\textbf{/}}unitn\Red{\textbf{/}}informatica\Red{\textbf{/}}lab\Red{\textbf{/}}prova.txt}
+   \item \structure{Windows} \\
+	  \texttt{C:\Red{\textbf{$\backslash$}}utente\Red{\textbf{$\backslash$}}unitn\Red{\textbf{$\backslash$}}informatica\Red{\textbf{$\backslash$}}lab\Red{\textbf{$\backslash$}}prova.txt}
+  \end{itemize}
+  
+  Il nome del file va sempre inserito \textbf{completo di estensione}.
+  
+\end{frame}
+
+\begin{frame}{Percorsi (II)}
+  Inoltre un percorso può essere:
+  \begin{itemize}
+   \item \alert{relativo}, se si riferisce alla cartella corrente.
+   \begin{itemize}
+     \item i path relatvi si riferiscono alla cartella corrente (indicata con \texttt{.},
+	   \texttt{..} alla cartella genitore di quella corrente).
+     \item in Eclipse la cartella corrente è la \textbf{cartella principale del progetto} all'interno
+     del \emph{workspace}.
+     \item \String{"esempio.txt"} è un path relativo alla cartella corrente.
+   \end{itemize}
+   \item \alert{assoluto}, se si riferisce alla radice del filesystem
+   (\texttt{\Red{\textbf{/}}} su sistemi Unix, \texttt{\Red{\textbf{C:$\backslash$}}} su Windows)
+   \begin{itemize}
+     \item \texttt{\Red{\textbf{/}}utente\Red{\textbf{/}}unitn\Red{\textbf{/}}info\Red{\textbf{/}}prova.txt}
+     \item \texttt{\Red{\textbf{C:$\backslash$}}utente\Red{\textbf{$\backslash$}}unitn\Red{\textbf{$\backslash$}}info\Red{\textbf{$\backslash$}}prova.txt}
+   \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Lettura da file (III)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jimport java.io.File;
+  \Jimport java.util.Scanner;
+
+  \Jpublic \Jclass LetturaFile {
+    \Jpublic \Jstatic \Jvoid main(String[] \Jargs) {
+
+      File file = \Jnew File(\String!"esempio.txt"|);
+      Scanner \Yellow!scan| = \Red!new Scanner(file);|
+
+      \dots
+  \end{JavaCodePlain}
+
+  Dopo aver scritto la dichiarazione dello \texttt{Scanner} dovremmo avere ottenuto:
+  \begin{itemize}
+   \item un \Yellow{warning} relativo al fatto che non chiudiamo lo scanner.
+   \item un \Red{errore} relativo al fatto che una \textbf{eccezione non \`e gestita} (\emph{unhandled}).
+  \end{itemize}
+
+  
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Lettura da file (III)}
+
+  \begin{JavaCodePlain}[commandchars=\\!|]
+      Scanner scan = \Red!new Scanner(file);|
+  \end{JavaCodePlain}
+
+  Possiamo risolvere il problema in due modi (vedere anche la funzionalità
+  \emph{quickfix} attivata con il comando \texttt{Ctrl + 1}):
+  \begin{itemize}
+   \item \textbf{lanciare} (\textbf{throw}) un'eccezione;
+   \item \textbf{gestire} l'eccezione con il costrutto \textbf{\texttt{try - catch}};
+  \end{itemize}
+
+  Questo avviene perché la lettura da file può causare errori come per esempio un \emph{file non esistente}
+  oppure \emph{non accessibile}.
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Lanciare un'eccezione}
+
+  Se decidiamo di lanciare un'eccezione allora la dichiarazione del \texttt{main}
+  viene modificata come segue:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jimport java.io.File;
+  \Jimport java.io.FileNotFoundException;
+  \Jimport java.util.Scanner;
+
+  \Jpublic \Jclass LetturaFile {
+
+    \Word!\dots| main(String[] \Jargs) \Jthrows FileNotFoundException {
+	  
+      File file = \Jnew File(\String!"esempio.txt"|);
+      Scanner scan = \Jnew Scanner(file);
+      \dots
+  \end{JavaCodePlain}
+
+  Questa sintassi segnala che la funzione \texttt{main} può terminare a causa
+  dell'errore \texttt{FileNotFoundException}.
+																																
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Gestire un'eccezione con \texttt{try - catch}}
+
+  La gestione dell'eccezione con \texttt{try - catch} avviene nel modo seguente:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jimport java.io.File;
+  \Jimport java.io.FileNotFoundException;
+  \Jimport java.util.Scanner;
+
+  \Jpublic \Jclass LetturaFile {
+
+    \Jpublic \Jstatic \Jvoid main(String[] args) {
+	    
+      File file = new File(\String!"esempio.txt"|);
+      Scanner scan;
+      \Jtry {
+        scan = new Scanner(file);
+      } \Jcatch (FileNotFoundException e) {
+        e.printStackTrace();
+        \Jreturn;
+      }
+  
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Gestire un'eccezione con \texttt{try - catch} (II)}
+
+  Le istruzioni nel blocco \texttt{try} vengono provate, se non causano errori l'esecuzione
+  del programma prosegue normalmente, \textbf{in caso di errore} viene eseguito il blocco
+  \texttt{catch}:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+      \Jtry {
+        scan = new Scanner(file);
+      } \Jcatch (FileNotFoundException e) {
+        \Jcomment!Queste istruzioni vengono eseguite solo se il|
+        \Jcomment!blocco try ha restituito un errore del tipo|
+        \Jcomment!FileNotFoundException|
+        e.printStackTrace();
+        \Jreturn;
+      }  
+  \end{JavaCodePlain}
+  
+  Lo scopo del blocco \texttt{try - catch} è quello di compiere le operazioni necessarie
+  in conseguenza dell'errore.
+\end{frame}
