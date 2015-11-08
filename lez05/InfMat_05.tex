@@ -1,0 +1,68 @@
+\documentclass[10pt]{beamer}
+
+% %%% Style %%%
+\mode<presentation>
+{
+  \usetheme{Berlin}
+  \setbeamertemplate{blocks}[rounded]
+  \setbeamercolor{block title}{bg=gray}
+  \setbeamercovered{transparent}
+}
+
+% %%% Packages %%%
+\input{includes/packages}
+
+% Custom packages (needs absolute path from root document
+\input{includes/titlepage.sty}
+\input{includes/appendixnumberbeamer.sty}
+
+% %%% Macros and custom commands %%%
+\input{includes/macros}
+
+\title[Laboratorio di Informatica - Lezione 5]{Laboratorio di Informatica \\ Lezione 5}
+\author[Cristian Consonni]{Cristian Consonni}
+\date[28/10/2015]{11 novembre 2015}
+\institute[UniTN]{Università degli Studi di Trento}
+
+% %%% Put slides with section name at the begining of each section %%%
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline for section \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+%%%%%%%%%% TITLE %%%%%%%%%%
+% Formerly part of title.tex
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+%%%%%%%%%% END TITLE %%%%%%%%%%
+
+\input{sections/intro.tex}
+
+\section{Introduzione alla Programmazione Orientata agli Oggetti (OOP)}
+\input{sections/oop.tex}
+
+\section{Oggetti e Classi}
+\input{sections/classi.tex}
+
+\section{Utilizzo del debugger}
+\input{sections/debugger.tex}
+
+\section{Esercizi}
+\input{sections/esercizi.tex}
+
+% \appendix
+% \section*{Backup}
+% \input{99backup/backup.tex}
+
+\end{document}

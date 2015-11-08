@@ -1,0 +1,333 @@
+\begin{frame}{Programmazione Orientata agli Oggetti (I)}
+  
+  \begin{itemize}
+   \item La Programmazione Orientata agli Oggetti (o \emph{Object Oriented Programming}, OOP, in inglese)
+         è un paradigma di Programmazione basato sui concetti di \textbf{oggetto} e \textbf{classe}.
+   \item In questa lezione introdurremo i concetti di base legati agli oggetti e li utilizzeremo
+         come una \textbf{struttura dati}, ovvero una entità che permette di gestire un insieme di
+         dati (detti \emph{attributi} o \emph{membri}).
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Programmazione Orientata agli Oggetti (II)}
+  
+  Finora \textbf{\Red{ad eccezione delle \texttt{String}}} abbiamo usato delle variabili di uno dei
+  tipi \textbf{primitivi} (o \emph{atomici}):
+  \begin{itemize}
+    \item \texttt{\Word{int}}
+    \item \texttt{\Word{double}}
+    \item \texttt{\Word{float}}
+    \item \dots
+  \end{itemize}
+  
+
+  utilizzando un tipo primitivo sappiamo che i dati verrano rappresentati in memeria in un 
+  un modo predefinito:
+  \begin{itemize}
+   \item \texttt{\Word{int}} $\rightarrow$ 4 byte (32 bit) 
+   \begin{itemize}
+    \item min: $-2^{31}$;
+    \item max: $2^{31} - 1$;
+   \end{itemize}
+
+   \item \texttt{\Word{double}} $\rightarrow$ 8 byte (64 bit)
+   \begin{itemize}
+    \item $max \equiv |min|$: $1.7976931348623157 \cdot 10^{308}$;
+    \item $\varepsilon$: $4.9 \cdot 10^{-324}$;
+   \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Programmazione Orientata agli Oggetti (III)}
+  
+  Immaginiamo di volere scrivere un programma che memorizza i dati (nome e cognome,
+  luogo di nascita, età) di una persona.
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  
+  String nome1 = \String!"Alice Rossi"|;
+  String luogo1 = \String!"Milano"|;
+  \Jint eta1 = 19;
+  
+  String nome2 = \String!"Roberto Verdi"|;
+  String cognome2 = \String!"Roma"|;
+  \Jint  eta2 = 20;
+  \dots
+
+  \end{JavaCodePlain}
+  
+  Problemi di questo approccio:
+  \begin{itemize}
+   \item   È molto scomodo creare nuove istanze dell'entità (concettuale) ``Persona'';
+   \item   È molto facile commettere errori;
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Programmazione Orientata agli Oggetti (IV)}
+
+  Una \textbf{oggetto}:
+  \begin{itemize}
+    \item è un'\emph{entità software} costituito da un insieme di stati e comportamenti che si riferiscono a uno stesso concetto; \\
+          {\footnotesize (\emph{«An object is a software bundle of related state and behavior.»}) }
+          {\scriptsize \LightBlue{\url{https://docs.oracle.com/javase/tutorial/java/concepts/}} }
+    \item consiste in una regione di memoria allocata;
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Programmazione Orientata agli Oggetti (V)}
+
+  Una \textbf{classe}:
+  \begin{itemize}
+    \item è un prototipo a partire dalla quale gli oggetti vengono \textbf{creati} (o \textbf{istanziati}, 
+	  o \textbf{instanziati});\\
+          {\footnotesize (\emph{«A class is a blueprint or prototype from which objects are created.»}) }
+          {\scriptsize \LightBlue{\url{https://docs.oracle.com/javase/tutorial/java/concepts/}} }
+    \item è la specifica che descrive quali sono i possibili stati e comportamenti di un oggetto creati
+          a partire da esso;
+    \item è un insieme di variabili (anche dette \textbf{\emph{membri}} o \textbf{\emph{attributi}}) e di
+         funzioni i metodi (dette \textbf{\emph{metodi}});
+    \item è anche chiamata \emph{Abstract Data Type} (ADT).
+  \end{itemize}
+\end{frame}
+
+
+\pgfdeclareimage[width=0.35\paperwidth]{people01}{img/people_jumping_01.png}
+\pgfdeclareimage[width=0.35\paperwidth]{people02}{img/people_jumping_02.png}
+\pgfdeclareimage[width=0.35\paperwidth]{people03}{img/people_jumping_03.png}
+
+\begin{frame}[fragile]\frametitle{Programmazione Orientata agli Oggetti (VI)}
+
+
+  \begin{columns}[T]
+    \begin{column}[T]{7cm}
+    Classe:
+    \begin{JavaCodePlain}[commandchars=\\!|]
+    
+    \Jpublic \Jclass Persona {
+
+      \Jprivate String nome;      
+      \Jprivate String luogoNascita;
+      \Jprivate \Jint eta;
+
+    }
+
+    \end{JavaCodePlain}
+    \end{column}
+
+    \begin{column}[T]{5cm}
+    Oggetti:
+    \begin{center}
+      \pgfuseimage{people01}
+    \end{center}
+    \end{column}
+  \end{columns}
+
+
+  \begin{minipage}[b]{12cm}
+  {\scriptsize Photo credit: CC-BY-SA Mark Sebastian @ Wikimedia Commons \url{http://bit.ly/1kip83N}}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Programmazione Orientata agli Oggetti (VI)}
+
+
+  \begin{columns}[T]
+    \begin{column}[T]{7cm}
+    Classe:
+    \begin{JavaCodePlain}[commandchars=\\!|]
+    
+    \Jpublic \Jclass Persona {
+
+      \Jprivate String nome;      
+      \Jprivate String luogoNascita;
+      \Jprivate \Jint eta;
+
+    }
+    
+    \dots
+    
+    Persona Alice;
+
+    \end{JavaCodePlain}
+    \end{column}
+
+    \begin{column}[T]{5cm}
+    Oggetti:
+    \begin{center}
+      \pgfuseimage{people02}
+    \end{center}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Programmazione Orientata agli Oggetti (VI)}
+
+
+  \begin{columns}[T]
+    \begin{column}[T]{7cm}
+    Classe:
+    \begin{JavaCodePlain}[commandchars=\\!|]
+    
+    \Jpublic \Jclass Persona {
+
+      \Jprivate String nome;      
+      \Jprivate String luogoNascita;
+      \Jprivate \Jint eta;
+
+    }
+
+    \dots
+    
+    Persona Alice;
+    Persona John;
+
+    \end{JavaCodePlain}
+    \end{column}
+
+    \begin{column}[T]{5cm}
+    Oggetti:
+    \begin{center}
+      \pgfuseimage{people03}
+    \end{center}
+    \end{column}
+  \end{columns}
+  
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Programmazione Orientata agli Oggetti (VI)}
+
+
+  \begin{columns}[T]
+    \begin{column}[T]{7cm}
+    Classe:
+    \begin{JavaCodePlain}[commandchars=\\!|]
+    
+    \Jpublic \Jclass Persona {
+
+      \Jprivate String nome;      
+      \Jprivate String luogoNascita;
+      \Jprivate \Jint eta;
+
+    }
+
+    \dots
+    
+    Persona Alice;
+    Persona John;
+
+    \end{JavaCodePlain}
+    \end{column}
+
+    \begin{column}[T]{5cm}
+    Oggetti:
+    \begin{center}
+      \pgfuseimage{people03}
+    \end{center}
+    \end{column}
+  \end{columns}
+
+  \begin{alertblock}{Oggetti vs. Classi}
+    Un oggetto è un'istanza di una classe
+  \end{alertblock}
+  
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Classi vs. Oggetti (I)}
+
+  \begin{columns}
+    \begin{column}{6cm}
+      Classe:
+      \begin{itemize}
+	\item descrizione delle proprietà \emph{comuni} a una tipologia di variabili;
+	\item \`e un ``concetto'';
+	\item \`e una parte di un programma;
+      \end{itemize}
+      
+%       \begin{enumerate}
+%        \item Persona
+%        \item Album
+%        \item Canzoni
+%       \end{enumerate}
+    \end{column}
+
+    \begin{column}{6cm}
+      Oggetti:
+      \begin{itemize}
+	\item rappresentazioni delle proprietà di una singola istanza;
+	\item Un ``fenomeno''/``manifestazione''.
+	\item una parte dei dati nell'esecuzione di un programma.
+      \end{itemize}
+      
+%       \begin{enumerate}
+%        \item Hillary Clinton, Rafael Nadal, Lewis Hamilton;
+%        \item Thriller, Back in Black, The Dark Side of the Moon
+%        \item {\scriptsize Thriller, Beat it, Billie Jean, Hells Bells, Shoot to Thrill, Back in Black, \dots}
+%       \end{enumerate}
+    \end{column}
+  \end{columns}
+
+  ${}$
+  \begin{columns}[T]
+    \begin{column}[T]{6cm}
+      \begin{enumerate}
+       \item Persona
+       \item Album
+       \item Canzoni
+      \end{enumerate}
+    \end{column}
+
+    \begin{column}[T]{6cm}    
+      \begin{enumerate}
+       \item Hillary Clinton, Rafael Nadal, Lewis Hamilton;
+       \item Thriller, Back in Black, The Dark Side of the Moon
+       \item {\small Thriller, Beat it, Billie Jean, Hells Bells, Shoot to Thrill, Back in Black, \dots}
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+\pgfdeclareimage[width=0.25\paperwidth]{people01}{img/muffins.jpg}
+\begin{frame}[fragile]\frametitle{Classi vs. Oggetti (II)}
+
+  \begin{itemize}
+   \item Nella programmazione ad oggetti (OOP) si scrivono classi;
+    \begin{itemize}
+      \item il codice sorgente che scriviamo contiene delle \textbf{classi};
+      \item una classe è ``statica'';
+      \item ``Una'';
+    \end{itemize}
+   \end{itemize}
+
+   \begin{itemize}
+   \item Gli oggetti sono creati a partire dalle classi;
+    \begin{itemize}
+      \item una classe è come una ricetta di una torta, gli oggetti sono le torte prodotte
+      a partire dalla ricetta.
+      \item un oggetto è ``dinamico''
+      \item ``Molti''
+    \end{itemize}
+  \end{itemize}
+
+  ${}$
+  \begin{columns}[T]
+    \begin{column}[T]{4cm}
+      Ricetta (Classe) \textbf{Muffin}:
+      \begin{enumerate}
+       \item 3 uova;
+       \item 380 g di farina;
+       \item \dots
+      \end{enumerate}
+    \end{column}
+
+    \begin{column}[T]{7cm}    
+     \pgfuseimage{people01}
+    \end{column}
+  \end{columns}
+  ${}$
+  {\scriptsize Photo credit: CC-BY Sara K @ Flickr \url{http://bit.ly/1kioQdd}}
+\end{frame}

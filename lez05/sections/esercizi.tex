@@ -1,0 +1,68 @@
+
+\begin{frame}[fragile]\frametitle{Esercizi (I)}
+
+  Creare un nuovo progetto chiamato \texttt{ProgettoMusica} che:
+  \begin{itemize}
+   \item contenga una classe principale \texttt{Raccolta} (\texttt{Raccolta.java});
+   \item contenga una classe secondaria \texttt{Canzone} (\texttt{Canzone.java});
+   \item la classe \texttt{Canzone} contiene i seguenti attributi \Jprivate{}:
+   \begin{itemize}
+    \item una variabile \texttt{nome} di tipo \texttt{String} (nome della canzone);
+    \item una variabile \texttt{artista} di tipo \texttt{String} (nome dell'autore della canzone)
+    \item una variabile \texttt{durata} di tipo \texttt{String} (durata della canzone)
+    {\footnotesize (scrivere la durata come una stringa del tipo \texttt{XmYYs}, ovvero \texttt{X} minuti e \texttt{YY} secondi)};
+    \item una variabile \texttt{rating} di tipo \texttt{\Jint} (voto della canzone da 1 a 5);
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Esercizi (II)}
+
+  La classe \texttt{Canzone} ha:
+  \begin{itemize}
+   \item un costruttore con parametri che imposta i valori di \texttt{nome}, \texttt{artista}, \texttt{durata} e \texttt{rating};
+   \item un costruttore senza parametri che imposta i valori di \texttt{nome} a \String{"Nessun nome"}, \texttt{nome} a \String{"Nessuno"}, 
+   \texttt{durata} a \String{"0m00s"} e \texttt{rating} a 0;
+   \item i metodi getter e setter per le variabili;
+   \item un metodo \texttt{toString()} che stampa i dati contenuti nella classe come segue:
+   \begin{itemize}
+    \item \texttt{$<nome>$ di $<artista>$ ($<durata>$), $<rating>$ stelle}
+    \item \texttt{Thriller di Michael Jackson (5m58s), 5 stelle}
+   \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Esercizi (III)}
+
+  \begin{itemize}
+   \item Nella classe principale \texttt{Raccolta} creare un vettore di 5 canzoni (oggetti di tipo \texttt{Canzone})
+   inizializzandoli con dati a vostra scelta e successivamente stamparli;
+   \item Successivamente, modificare il programma per stampare solo le canzoni che hanno un rating superiore a 3;
+   \item Infine, modificare nuovamente il programma per stampare solo le canzoni che hanno \texttt{\String{"Michael Jackson"}};
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Esercizi (IV)}
+  
+  \textbf{Suggerimento:}
+  \begin{itemize}
+   \item Ricordate che per verificare l'uguaglianza tra due stringhe dovete usare il metodo \texttt{\textbf{equals}};
+   \item Ricordate che c'è differenza tra maiuscole minuscole;
+  \end{itemize}
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  
+  String mj = \String!"Michael Jackson"|;
+  
+  \Jcomment!mj.equals(c1.getArtista()) ritornerà True|
+  Canzone c1 = \Jnew Canzone(\String!"Thriller"|, \String!"Michael Jackson"|,
+                           \String!"5m58"|, 5);
+  
+  \Jcomment!mj.equals(c2.getArtista()) ritornerà False|
+  Canzone c2 = \Jnew Canzone(\String!"Back in Black"|, \String!"AC/DC"|,
+                           \String!"4m15"|, 5);
+  \end{JavaCodePlain}
+
+\end{frame}
+

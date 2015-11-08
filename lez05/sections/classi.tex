@@ -1,0 +1,280 @@
+
+\begin{frame}[fragile]\frametitle{Classi: costruttore (I)}
+
+  Una classe necessita di un \textbf{costruttore} per potere essere istanziata:
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jpublic \Jclass Persona {
+    \Jcomment!attributi della classe -> variabili dell'oggetto|
+    \Jprivate String nome;      
+    \Jprivate String luogoNascita;
+    \Jprivate \Jint eta;
+
+    \Jcomment!Costruttore con parametri|
+    \Jpublic Persona(String nome, String luogoNascita, \Jint eta) {
+      \dots
+    }
+
+    \Jcomment!Costruttore senza parametri con valori di default|
+    \Jpublic Persona() {
+      \dots
+    }    
+  }
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Classi: costruttore (II)}
+
+  Il \textbf{costruttore} è il \emph{metodo} che crea la classe:
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jpublic \Jclass Persona {
+    \dots
+    \Jcomment!Costruttore con parametri|
+    \Jpublic Persona(String nome, String luogoNascita, \Jint eta) {
+      \Jthis.nome = nome;
+      \Jthis.luogoNascita = luogo;
+      \Jthis.eta = eta;
+    }
+
+    \Jcomment!Costruttore senza parametri con valori di default|
+    \Jpublic Persona() {
+      \Jthis.nome = \String!"Anonimo"|;
+      \Jthis.luogoNascita = \String!"Sconosciuto"|;
+      \Jthis.eta = -1;
+    }
+  }
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Classi: costruttore (III)}
+
+  La parola riservata \Jthis{} serve per specificare se ci si sta riferendo
+  ai parametri del costruttore o ai membri della classe.
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \dots
+    \Jpublic Persona(String nome, String luogoNascita, \Jint eta) {
+      \Jthis.nome = nome;
+      \Jthis.luogoNascita = luogo;
+      \Jthis.eta = eta;
+  \dots
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{La parola riservata \texttt{this}}
+  
+  \begin{itemize}
+   \item Costruttore con parametri:
+  \end{itemize}
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Jpublic Persona(String nome, String luogoNascita, \Jint eta) {
+      \Jthis.nome = nome;
+      \Jthis.luogoNascita = luogo;
+      \Jthis.eta = eta;
+  
+  Persona anna = Persona(\String!"Anna Rossi"|, \String!"Milano"|, 19);
+  \end{JavaCodePlain}
+
+  \begin{itemize}
+   \item Costruttore senza parametri:
+  \end{itemize}
+  \begin{JavaCodePlain}[commandchars=\\!|]
+    \Jpublic Persona() {
+      \Jthis.nome = \String!"Anonimo"|;
+      \Jthis.luogoNascita = \String!"Sconosciuto"|;
+      \Jthis.eta = -1;
+    }
+  
+  Persona anon = Persona();
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}{Accessibilità delle variabili (I)}
+
+  Le parole riservate \Jprivate, \Jpublic, \Jprotected{} modificano l'accessibilità delle variabili:
+  \begin{enumerate}
+   \item \Jpublic: sono accessibili da chiunque. (\Green{\textbf{più accessibili}})
+   \item \Jprotected: sono accessibili solo all'interno dallo stesso package dalla stessa classe e dalle sottoclassi.
+   \item default (nessun modificatore aggiuntivo): sono accessibili solo all'interno dallo stesso package dalla stessa classe.
+   \item \Jprivate: sono accessibili sollo dalla stessa classe. (\Red{\textbf{meno accessibili}})
+  \end{enumerate} 
+
+  \pause{
+  \begin{alertblock}{public e private}
+    Noi useremo solo \textbf{public} (\Green{\textbf{più accessibili}}) e \textbf{private} (\Red{\textbf{meno accessibili}})
+  \end{alertblock}
+  }
+
+\end{frame}
+
+\begin{frame}{Accessibilità delle variabili (II)}
+
+%   \begin{table}[]
+%   \centering
+%     \begin{tabular}{l|llll}
+%       Modificatore                                                        & \multicolumn{1}{c}{Classe} & \multicolumn{1}{c}{Package} & \multicolumn{1}{c}{Sottoclasse} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Resto del\\ mondo\end{tabular}} \\ \hline
+%       \begin{tabular}[c]{@{}l@{}}\textbf{public}\\${}$\end{tabular}           & Sì                         & Sì                          & Sì                              & Sì                                                                            \\
+%       \begin{tabular}[c]{@{}l@{}}protected\\${}$\end{tabular}                 & Sì                         & Sì                          & Sì                              & No                                                                            \\
+%       \begin{tabular}[c]{@{}l@{}}default\\ (no modificatore)\end{tabular} & Sì                         & Sì                          & No                              & No                                                                            \\
+%       \begin{tabular}[c]{@{}l@{}}\textbf{private}\\${}$\end{tabular}          & Sì                         & No                          & No                              & No                                                                            
+%     \end{tabular}
+%   \end{table}  
+
+  La tabella seguente riassume l'accessibilità delle variabili dichiarate con i vari modificatori.
+  \begin{table}[htbp]
+    \begin{tabular}{|l|cccc|}
+      \hline
+      \multicolumn{1}{|c|}{\textbf{Modificatore}} & \textbf{Class} & \textbf{Package} & \textbf{Sottoclassi} & \textbf{Mondo} \\ \hline
+      \rowcolor[HTML]{9AFF99}
+      \textbf{public} & \textbf{Y} & \textbf{Y} & \textbf{Y} & \textbf{Y} \\ \hline
+      protected & Y & Y & Y & N \\ \hline
+      default
+      (no modificatore) & Y & Y & N & N \\ \hline
+      \rowcolor[HTML]{FD6864}
+      \textbf{private} & \textbf{Y} & \textbf{N} & \textbf{N} & \textbf{N} \\ \hline
+    \end{tabular}
+  \end{table}
+  {\footnotesize Si veda anche:}\\
+  {\scriptsize \LightBlue{\url{https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html}} }
+
+\end{frame}
+
+\begin{frame}{Accessibilità delle variabili: metodi getter e setter (I)}
+
+  Dato che le variabili \Jprivate{} non sono accessibili al di fuori della classe è necessario creare dei metodi
+  che restituiscono e modificano il loro valore. Questi metodi sono detti rispettivamente:
+  \begin{itemize}
+   \item \textbf{get}ter: restitituisce (\textbf{get}) il valore della variabile, ad es. \texttt{getNome()};
+   \item \textbf{set}ter: imposta (\textbf{set}) il valore della variabile, ad es. \texttt{setNome()};
+  \end{itemize}
+  di solito i nome sono \texttt{getNomeVariabile()} e \texttt{setNomeVariabile()};
+   
+  \pause{
+  \begin{alertblock}{Variabili private vs. public}
+    Se una variabile è \Jpublic{} non è necessario avere getter e setter, ma è buona norma usare 
+    variabili \Jprivate{} nelle classi
+  \end{alertblock}
+  }
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Accessibilità delle variabili: metodi getter e setter (II)}
+
+  Esempio di metodi \textbf{get}ter e \textbf{set}ter per la variabile \texttt{nome} nella classe
+  Persona:
+  
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jpublic \Jclass Persona {
+
+    \Jprivate String nome;
+    \dots
+    
+    \Jpublic String getNome() {
+      \Jreturn nome;
+    }
+
+    \Jpublic \Jvoid setNome(String nome) {
+      \Jthis.nome = nome;
+    }
+
+  }
+  \end{JavaCodePlain}
+
+\end{frame}
+
+\begin{frame}{Metodo \texttt{toString} (I)}
+
+  \begin{itemize}
+    \item il metodo \texttt{toString()} restituisce una \textbf{stringa} ovvero la ``rappresentazione testuale''
+	  dell'oggetto su cui è invocato (da usare ad esempio quando si stampa l'oggetto). 
+    \item la definizione default del metodo nella classe Object è \Blue{\texttt{$<nome\_classe>@<hashcode>$}};
+    \item possiamo ridefinire questo metodo per stampare un oggetto nel modo che vogliamo;
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Metodo \texttt{toString} (II)}
+
+  Esempio:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  \Jpublic \Jclass Persona {
+  
+    \Jprivate String nome;
+    \Jprivate String luogoNascita;
+    \Jprivate \Jint eta;
+
+    \dots
+
+    \Jpublic String toString() {
+      \Jreturn nome + \String!" ("| + luogoNascita + \String!"), "| + eta;
+    }
+  }
+  \end{JavaCodePlain}
+
+  \begin{itemize}
+   \item[$\Rightarrow$] \JprintLN(anna); $\Longrightarrow$ \texttt{Anna Rossi (Milano), 19}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Accessibilità delle classi}
+
+  A livello delle classe \`e possibile usare:
+  \begin{enumerate}
+   \item \Jpublic: classe accessibile anche da altri package.
+   \item default (nessun modificatore aggiuntivo): classe accessibile solo all'interno dello stesso package.
+  \end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Struttura di un progetto (I)}
+
+  In un progetto esistono più classi:
+  \begin{itemize}
+   \item Una classe principale che contiene il metodo \textbf{main};
+   \item altri file contenenti le altre classi ``secondarie'': create un nuovo file per ogni classe
+   (ad esempio \texttt{Persona.java} per la classe \texttt{Persona});
+   \item il nome di una classe ha l'iniziale maiuscola e si usa la notazione CamelCase/PascalCase;
+   \item non si possono avere due classi con lo stesso nome all'interno dello stesso progetto;
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Struttura di un progetto (II)}
+
+  Esempio:
+  \begin{itemize}
+   \item creiamo un progetto EsempioProgetto che riguarderà la musica (album e canzoni);
+   \item La classe principale si chiama \texttt{EsempioProgetto} e si trova nel file \texttt{EsempioProgetto.java};
+   \item Esistono due classi \texttt{Album} (\texttt{Album.java}) e \texttt{Canzone} (\texttt{Canzone.java}) che possono
+         essere usate dentro \texttt{EsempioProgetto}.
+  \end{itemize}
+
+\end{frame}
+
+\pgfdeclareimage[width=0.35\paperwidth]{progetto}{img/progetto.png}
+\begin{frame}[fragile]\frametitle{Struttura di un progetto (II)}
+
+  \begin{center}
+    \pgfuseimage{progetto}
+  \end{center}
+
+  Classe:
+  \begin{JavaCodePlain}[commandchars=\\!|]
+  
+  \Jpublic \Jclass EsempioProgetto {
+  
+    \Jpublic \Jstatic \Jvoid main(String[] \Jargs) {
+    
+      Album thriller = \Jnew Album(\String!"Thriller"|, \dots);
+      Canzone hb = new Canzone(\String!"Hells Bells"|, \String!"AC/DC"|, \String!"5:13"|);
+    }
+  }
+  \end{JavaCodePlain}
+
+\end{frame}
