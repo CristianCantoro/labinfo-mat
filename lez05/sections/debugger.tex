@@ -78,7 +78,7 @@
 \end{frame}
 
 \pgfdeclareimage[width=0.5\paperwidth]{debug_breakpoint}{img/debug/debug_breakpoint.png}
-\begin{frame}{Debugging (I)}
+\begin{frame}{Debugging (II)}
 
   \begin{itemize}
    \item Eclipse permette di lanciare un programma in \textbf{debug mode} e di usare una \textbf{debug perspective}
@@ -105,7 +105,7 @@
 }
 
 \pgfdeclareimage[width=0.5\paperwidth]{debug_perspective}{img/debug/debug_perspective.png}
-\begin{frame}{Debugging (II)}
+\begin{frame}{Debugging (V)}
 
   Confermare l'apertura della \emph{debug perspective}:
   \begin{center}
@@ -120,8 +120,17 @@
   \includepdf[pages={1}]{img/debug/debug02.pdf}
 }
 
+{
+  \setbeamercolor{background canvas}{bg=}
+  \includepdf[pages={1}]{img/debug/debug03.pdf}
+}
 
-\begin{frame}{Debugging (II)}
+{
+  \setbeamercolor{background canvas}{bg=}
+  \includepdf[pages={1}]{img/debug/debug04.pdf}
+}
+
+\begin{frame}{Debugging (IV)}
 
   Il debugger pu\`o essere comandato attraverso le icone nella barra o i tasti funzione:
   \begin{itemize}
@@ -133,7 +142,16 @@
 
 \end{frame}
 
-\begin{frame}{Debugging (III)}
+\pgfdeclareimage{debug_buttons02}{img/debug/debug_buttons02.png}
+\begin{frame}{Debugging (V)}
+
+  \begin{center}
+    \pgfuseimage{debug_buttons02}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Debugging (VI)}
 
   Dal pannello \textbf{variabili} è possibile:
   \begin{itemize}
@@ -141,4 +159,15 @@
     \item (click destro) impostare un nuovo valore per la variabile;
   \end{itemize}
 
+\end{frame}
+
+\pgfdeclareimage{debug_perspective_exit}{img/debug/debug_perspective_exit.png}
+\begin{frame}{Debugging (VII)}
+
+  Per uscira dal debugging, ovvero cambiare prospettiva e ritornare alla finestra ``standard''
+  di Eclipse, si possono usare i pulsanti posti in altro a destra:
+
+  \begin{center}
+    \pgfuseimage{debug_perspective_exit}
+  \end{center}
 \end{frame}
